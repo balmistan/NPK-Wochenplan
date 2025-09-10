@@ -1,0 +1,280 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>NPK-Wochenplan</title>
+<style>
+:root{
+  --border:#d6d6d6;
+  --text:#1f2937;
+  --bg:#ffffff;
+  --head-bg:#ffffff;
+}
+
+body{
+  margin:0;
+  padding:0;
+  font-family:system-ui,sans-serif;
+  background:var(--bg);
+  color:var(--text);
+}
+
+/* Wrapper per scroll solo se necessario */
+.table-wrapper{
+  width:100%;
+  overflow-x:auto;
+  padding-bottom:100px;
+}
+
+/* Tabella responsive */
+.db-plan{
+  width:100%;
+  border-collapse:collapse;
+  border:1px solid var(--border);
+  table-layout:auto; /* adattabile */
+}
+
+.db-plan  th:nth-child(1),
+.db-plan  td:nth-child(1){
+  display: none;
+}
+
+/* Intestazioni */
+.db-plan th{
+  background:var(--head-bg);
+  border:1px solid var(--border);
+  padding:.5rem;
+  text-align:left;
+  vertical-align:middle;
+  font-weight:600;
+  white-space:normal; /* permette a capo */
+}
+
+/* Seconda riga centrata */
+.db-plan thead tr:nth-child(2) th{text-align:center;}
+
+/* Celle corpo */
+.db-plan td{
+  border:1px solid var(--border);
+  padding:.5rem;
+  text-align:center;
+  white-space:normal; /* permette a capo */
+}
+
+
+
+/* Altezza minima righe */
+.db-plan tr{height:2rem;}
+
+/* Responsive per schermi piccoli */
+@media (max-width: 768px){
+  .db-plan th, .db-plan td{
+    padding:0.25rem;
+    font-size:0.85rem;
+  }
+}
+</style>
+</head>
+<body>
+
+<script>
+// Oggetto con chiavi → {testo (intervallo), colore}
+const testi = {
+  time_0600_0900: { testo: "06:00-09:00", colore: "orange" },
+  time_0600_0700: { testo: "06:00-07:00", colore: "blue" },
+  time_1300_1500: { testo: "13:00-15:00", colore: "green" },
+  time_0630_0900: { testo: "06:30-09:00", colore: "#cccc00" },
+  time_0930_1400: { testo: "09:30-14:00", colore: "red" },
+  time_0930_1500: { testo: "09:30-15:00", colore: "violet" },
+  npktime_0700_1300: { testo: "07:00-13:00", colore: "black" }
+};
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+var mittwochtabelle = Array();
+
+mittwochtabelle[0] = `[
+  ["Dresden-Neustadt", "", "Frühdienst", " 07:00-13:00", "Präsenzreinigung", 6, "Std","",["npktime_0700_1300"],"P1","","32"]
+]`;
+
+mittwochtabelle[1] = `[
+  ["Dresden-Neustadt","Vorplätze","Vorplatz","", "Abfallbehälter","2","Stk.","",["time_0630_0900"],"1","","2a"],
+  ["Dresden-Neustadt","Bahnsteige","5 und 6","","Abfallbehälter","7","Stk.","",["time_0630_0900"],"1","","2a"],
+  ["Dresden-Neustadt","Bahnsteige","7 und 8","","Abfallbehälter","8","Stk.","",["time_0630_0900"],"1","","2a"],
+  ["Dresden-Neustadt","Bahnsteige","1 und 2","","Abfallbehälter","3","Stk.","",["time_0630_0900"],"1","","2a"],
+  ["Dresden-Neustadt","Bahnsteige","3 und 4","","Abfallbehälter","4","Stk.","",["time_0630_0900"],"1","","2a"],
+  ["Dresden-Neustadt","Bahnsteige","3 und 4","","Abfallbehälter","1","Stk.","",["time_0630_0900"],"1","","2a"],
+  ["Dresden-Neustadt","Bahnsteige","5 und 6","","Aschenbecher","1","Stk.","",["time_0630_0900"],"1","","2a"],
+  ["Dresden-Neustadt","Unterführung","Durchgang A (Aufzug)","","Abfallbehälter","3","Stk.","",["time_0630_0900"],"1","","2a"],
+  ["Dresden-Neustadt","Unterführung","Durchgang B","","Abfallbehälter","3","Stk.","",["time_0630_0900"],"1","","2a"],
+  ["Dresden-Neustadt","Empfangshalle","Empfangshalle","","Abfallbehälter","3","Stk.","",["time_0630_0900"],"1","","2a"],
+  ["Dresden-Neustadt","Vorplätze","Vorplatz","","Aschenbecher","2","Stk.","",["time_0630_0900"],"1","","2a"],
+  ["Dresden-Neustadt","Bahnsteige","1 und 2","","Aschenbecher","1","Stk.","",["time_0630_0900"],"1","","2a"],
+  ["Dresden-Neustadt","Empfangshalle","Warteraum","","Boden","10","m²","",["time_0630_0900"],"1","","22"],
+  ["Dresden-Neustadt","Bahnsteige","1 und 2","innerhalb der Halle","Boden","702","m²","",["time_0630_0900"],"1","","31"],
+  ["Dresden-Neustadt","Unterführung","Durchgang A (Aufzug)","","Boden","427","m²","",["time_0630_0900"],"1","","31"],
+  ["Dresden-Neustadt","Unterführung","Durchgang B","","Boden","427","m²","",["time_0930_1400"],"1","","23"],
+  ["Dresden-Neustadt","Empfangshalle","Gang zur Sanitäranlage","","Boden","45,72","m²","",["time_0930_1400"],"1","","22"],
+  ["Dresden-Neustadt","Bahnsteige","1 und 2","","Sitzbank oder 3 Schalen","19,8","lfm","",["time_0930_1400"],"1","","4"],
+  ["Dresden-Neustadt","Bahnsteige","3 und 4","","Sitzbank oder 3 Schalen","19,8","lfm","",["time_0930_1400"],"1","","4"],
+  ["Dresden-Neustadt","Bahnsteige","5 und 6","","Sitzbank oder 3 Schalen","23,4","lfm","",["time_0930_1400"],"1","","4"],
+  ["Dresden-Neustadt","Bahnsteige","7 und 8","","Sitzbank oder 3 Schalen","25,2","lfm","",["time_0930_1400"],"1","","4"],
+  ["Dresden-Neustadt","Bahnsteige","1 und 2","Handläufe Treppen","Handlauf","36","lfm","",["time_0930_1400"],"1","","7"],
+  ["Dresden-Neustadt","Bahnsteige","3 und 4","Handläufe Treppen","Handlauf","36","lfm","",["time_0930_1400"],"1","","7"],
+  ["Dresden-Neustadt","Bahnsteige","5 und 6","Handläufe Treppen","Handlauf","36","lfm","",["time_0930_1400"],"1","","7"],
+  ["Dresden-Neustadt","Bahnsteige","7 und 8","Handläufe Treppen","Handlauf","36","lfm","",["time_0930_1400"],"1","","7"],
+  ["Dresden-Neustadt","Unterführung","Durchgang A (Aufzug)","Handläufe Treppen","Handlauf","20","lfm","",["time_0930_1400"],"1","","7"],
+  ["Dresden-Neustadt","Unterführung","Durchgang B","Handläufe Treppen","Handlauf","20","lfm","",["time_0930_1400"],"1","","7"],
+  ["Dresden-Neustadt","Bahnsteige","1 und 2","beide Treppen","Treppe","92,88","m²","",["time_0930_1400"],"1","","34"],
+  ["Dresden-Neustadt","Bahnsteige","3 und 4","beide Treppen","Treppe","92,88","m²","",["time_0930_1400"],"1","","34"]
+]`;
+
+
+mittwochtabelle[2] = `[
+  ["Dresden-Neustadt","Bahnsteige","5 und 6","beide Treppen","Treppe","92,88","m²","",["time_0930_1400"],"1","","34"],
+  ["Dresden-Neustadt","Bahnsteige","7 und 8","beide Treppen","Treppe","92,88","m²","",["time_0930_1400"],"1","","34"],
+  ["Dresden-Neustadt","Unterführung","Durchgang A (Aufzug)","3 Vitrinen (Unterführung)","Vitrinen","4,5","m²","",["time_0930_1400"],"1","","20"],
+  ["Dresden-Neustadt","Unterführung","Durchgang B","3 Vitrinen (Unterführung)","Vitrinen","4,5","m²","",["time_0930_1400"],"1","","20"],
+  ["Dresden-Neustadt","Vorplätze","Hansastr.","","Vitrinen","1","Stk.","",["time_0930_1400"],"1","","17a"],
+  ["Dresden-Neustadt","Unterführung","Durchgang A (Aufzug)","3 Vitrinen (Unterführung)","Vitrinen","3","Stk.","",["time_0930_1400"],"1","","17a"],
+  ["Dresden-Neustadt","Unterführung","Durchgang B","3 Vitrinen (Unterführung)","Vitrinen","3","Stk.","",["time_0930_1400"],"1","","17a"],
+  ["Dresden-Neustadt","Bahnsteige","1 und 2","Boden im WSH","Boden","9,1","m²","",["time_0630_0900"],"1","","23"],
+  ["Dresden-Neustadt","Vorplätze","Vorplatz/Eingang BM","","Abfallbehälter","1","Stk.","",["time_0630_0900"],"1","","2a"],
+  ["Dresden-Neustadt","Empfangshalle","Warteraum","","Abfallbehälter","1","Stk.","",["time_0630_0900"],"1","","2a"],
+  ["Dresden-Neustadt","Empfangshalle","Warteraum","","Sitzbank oder 3 Schalen","18","lfm","",["time_0930_1400"],"1","","4"],
+  ["Dresden-Neustadt","Unterführung","Durchgang A (Aufzug)","3 Vitrinen (Ausgang Hansastr.)","Vitrinen","3","Stk.","",["time_0930_1400"],"1","","17a"],
+  ["Dresden-Neustadt","Unterführung","Durchgang B","3 Vitrinen (Ausgang Hansastr.)","Vitrinen","3","Stk.","",["time_0930_1400"],"1","","17a"],
+  ["Dresden-Neustadt","Bahnsteige","7 und 8","Boden im WSH","Boden","33,3","m²","",["time_0630_0900"],"1","","23"]
+]`;
+
+
+
+ mittwochtabelle[3] = `[
+  ["Dresden-Neustadt", "Empfangshalle", "Empfangshalle", "Glasfläche Wartebereich", "Glasflächen", "13.14", "m²","",["time_0930_1500"],2,"","18a"],
+  ["Dresden-Neustadt", "Bahnsteige", "1 und 2", "Glaswand mit Sitzgr. (Ri Hbf)", "Glasflächen", "20", "m²","",["time_0930_1500"],2,"","18a"],
+  ["Dresden-Neustadt", "Bahnsteige", "3 und 4", "Glaswand mit Sitzgr. (Ri Hbf)", "Glasflächen", "20", "m²","",["time_0930_1500"],2,"","18a"],
+  ["Dresden-Neustadt", "Bahnsteige", "5 und 6", "Glaswand mit Sitzgr. (Ri Hbf)", "Glasflächen", "22", "m²","",["time_0600_0900"],2,"","18a"],
+  ["Dresden-Neustadt", "Bahnsteige", "7 und 8", "WSH (außerhalb der Halle)", "Glasflächen", "66.55", "m²","",["time_0600_0900"],2,"","18a"],
+  ["Dresden-Neustadt", "Bahnsteige", "3 und 4", "Glaswand mit Sitzgr. (Ri Rdb)", "Glasflächen", "20", "m²","",["time_0930_1500"],2,"","18a"],
+  ["Dresden-Neustadt", "Bahnsteige", "7 und 8", "WSH (außerhalb der Halle)", "Glasflächen", "57", "m²","",["time_0930_1500"],2,"","18a"],
+  ["Dresden-Neustadt", "Empfangshalle", "Vitrinen DG A vor Aufzug + DB Infopoint", "1 Vitrine DG Höhe Aufzug + 1 Vitrine Höhe DB Infopoint", "Vitrinen", "2", "Stk.","",["time_0930_1500"],2,"","20"],
+  ["Dresden-Neustadt", "Empfangshalle", "vor DG B", "3 Vitrinen", "Vitrinen", "3", "Stk.","",["time_0930_1500"],2,"","20"],
+  ["Dresden-Neustadt", "Bahnsteige", "5 und 6", "6 Vitrinen (Sitzgr. Ri Rdb)", "Vitrinen", "10.9", "m²","",["time_0930_1500"],2,"","20"],
+  ["Dresden-Neustadt", "Bahnsteige", "3 und 4", "4 Vitrinen (Sitzgr. Ri Hbf)", "Vitrinen", "4", "Stk.","",["time_0930_1500"],2,"","17a"],
+  ["Dresden-Neustadt", "Bahnsteige", "5 und 6", "6 Vitrinen (Sitzgr. Ri Hbf)", "Vitrinen", "2", "Stk.","",["time_0930_1500"],2,"","17a"],
+  ["Dresden-Neustadt", "Bahnsteige", "7 und 8", "6 Vitrinen (Sitzgr. Ri Hbf)", "Vitrinen", "6", "Stk.","",["time_0930_1500"],2,"","17a"],
+  ["Dresden-Neustadt", "Bahnsteige", "1 und 2", "4 Vitrinen (Sitzgr. Ri Rdb)", "Vitrinen", "4", "Stk.","",["time_0930_1500"],2,"","17a"],
+  ["Dresden-Neustadt", "Empfangshalle", "vor DG A (Aufzug)", "3 Vitrinen", "Vitrinen", "3", "Stk.","",["time_0930_1500"],2,"","17a"],
+  ["Dresden-Neustadt", "Empfangshalle", "vor DG B", "3 Vitrinen", "Vitrinen", "3", "Stk.","",["time_0930_1500"],2,"","17a"],
+  ["Dresden-Neustadt", "Bahnsteige", "5 und 6", "6 Vitrinen (Sitzgr. Ri Rdb)", "Vitrinen", "6", "Stk.","",["time_0930_1500"],2,"","17a"],
+  ["Dresden-Neustadt", "Bahnsteige", "7 und 8", "Glaswand mit Sitzgr. (Ri Hbf)", "Glasflächen", "22", "m²","",["time_0600_0900"],2,"","18a"],
+  ["Dresden-Neustadt", "Bahnsteige", "7 und 8", "Glaswand mit Sitzgr. (Ri Rdb)", "Glasflächen", "22", "m²","",["time_0600_0900"],2,"","18a"],
+  ["Dresden-Neustadt", "Bahnsteige", "1 und 2", "Glaswand mit Sitzgr. (Bstg Mitte)", "Glasflächen", "20", "m²","",["time_0930_1500"],2,"","18a"],
+  ["Dresden-Neustadt", "Empfangshalle", "Empfangshalle", "Fensterbänke", "Wandfläche bis 3m", "3", "Stk.","",["time_0930_1500"],2,"","17a"],
+  ["Dresden-Neustadt", "Bahnsteige", "1 und 2", "4 Vitrinen (Sitzgr. Ri Hbf)", "Vitrinen", "4", "Stk.","",["time_0930_1500"],2,"","17a"],
+  ["Dresden-Neustadt", "Bahnsteige", "1 und 2", "4 Vitrinen (Sitzgr. Ri Rdb)", "Vitrinen", "4", "Stk.","",["time_0930_1500"],2,"","17a"],
+  ["Dresden-Neustadt", "Bahnsteige", "3 und 4", "4 Vitrinen (Sitzgr. Bstg Mitte)", "Vitrinen", "4", "Stk.","",["time_0930_1500"],2,"","17a"],
+  ["Dresden-Neustadt", "Bahnsteige", "5 und 6", "2 Vitrinen (Sitzgr. Bstg Mitte)", "Vitrinen", "2", "Stk.","",["time_0930_1500"],2,"","17a"],
+  ["Dresden-Neustadt", "Bahnsteige", "7 und 8", "6 Vitrinen (Sitzgr. Ri Rdb)", "Vitrinen", "6", "Stk.","",["time_0930_1500"],2,"","17a"]
+]`;
+
+
+createTable(mittwochtabelle, "Mittwoch");
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+function createTable(datacontent, wday){
+for (let tableindex=0; tableindex < datacontent.length; tableindex++){
+// Crea il wrapper
+const wrapper = document.createElement("div");
+wrapper.className = "table-wrapper";
+
+// Crea la tabella
+const table = document.createElement("table");
+table.className = "db-plan";
+
+// Crea thead
+const thead = document.createElement("thead");
+
+// Prima riga intestazioni
+const tr1 = document.createElement("tr");
+tr1.innerHTML = `
+  <th></th>
+  <th colspan="2">Dresden-Neustadt</th>
+  <th></th>
+  <th></th>
+  <th></th>
+  <th></th>
+  <th></th>
+  <th></th>
+  <th colspan="3">${wday}</th>
+`;
+thead.appendChild(tr1);
+
+// Seconda riga intestazioni
+const tr2 = document.createElement("tr");
+tr2.innerHTML = `
+  <th>Ort/Bahnhof</th>
+  <th>Service</th>
+  <th>Bereich</th>
+  <th>Bemerkung neu</th>
+  <th>Inventar</th>
+  <th>Menge</th>
+  <th>Einheit</th>
+  <th>Reihen<br />folge</th>
+  <th>Leistungs-<br />zeit</th>
+  <th>${wday.slice(0,2)}</th>
+  <th>Bemerkungen</th>
+  <th>Zielbild</th>
+`;
+thead.appendChild(tr2);
+
+// Aggiungi thead alla tabella
+table.appendChild(thead);
+
+// Crea tbody
+const tbody = document.createElement("tbody");
+tbody.id = "table-body";
+table.appendChild(tbody);
+
+// Inserisci tabella dentro wrapper
+wrapper.appendChild(table);
+
+// Infine aggiungi tutto al body
+document.body.appendChild(wrapper);
+
+// -------------------------
+// Usa direttamente tbody già creato
+// -------------------------
+
+var data = JSON.parse(datacontent[tableindex]);
+
+// Crea le righe
+data.forEach(row => {
+  var tr = document.createElement('tr');
+  row.forEach((cell, index) => {
+    var td = document.createElement('td');
+
+    if (index === 8 && Array.isArray(cell)) { // colonna 9
+      var key = cell[0];
+      var dati = testi[key];
+      if(dati){
+        var [start, end] = dati.testo.split("-");
+        td.innerHTML = `${start}<br>${end}`;
+        td.style.color = dati.colore;
+      }
+    } else {
+      td.textContent = cell;
+    }
+
+    tr.appendChild(td);
+  });
+  tbody.appendChild(tr);
+});
+}
+}//close createTable()
+</script>
+
+</body>
+</html>
+
