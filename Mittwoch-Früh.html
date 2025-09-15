@@ -4,77 +4,22 @@
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width,initial-scale=1" />
 <title>NPK-Wochenplan</title>
-<style>
-:root{
-  --border:#d6d6d6;
-  --text:#1f2937;
-  --bg:#ffffff;
-  --head-bg:#ffffff;
-}
-
-body{
-  margin:0;
-  padding:0;
-  font-family:system-ui,sans-serif;
-  background:var(--bg);
-  color:var(--text);
-}
-
-/* Wrapper per scroll solo se necessario */
-.table-wrapper{
-  width:100%;
-  overflow-x:auto;
-  padding-bottom:100px;
-}
-
-/* Tabella responsive */
-.db-plan{
-  width:100%;
-  border-collapse:collapse;
-  border:1px solid var(--border);
-  table-layout:auto; /* adattabile */
-}
-
-.db-plan  th:nth-child(1),
-.db-plan  td:nth-child(1){
-  display: none;
-}
-
-/* Intestazioni */
-.db-plan th{
-  background:var(--head-bg);
-  border:1px solid var(--border);
-  padding:.5rem;
-  text-align:left;
-  vertical-align:middle;
-  font-weight:600;
-  white-space:normal; /* permette a capo */
-}
-
-/* Seconda riga centrata */
-.db-plan thead tr:nth-child(2) th{text-align:center;}
-
-/* Celle corpo */
-.db-plan td{
-  border:1px solid var(--border);
-  padding:.5rem;
-  text-align:center;
-  white-space:normal; /* permette a capo */
-}
 
 
 
-/* Altezza minima righe */
-.db-plan tr{height:2rem;}
 
-/* Responsive per schermi piccoli */
-@media (max-width: 768px){
-  .db-plan th, .db-plan td{
-    padding:0.25rem;
-    font-size:0.85rem;
-  }
-}
-</style>
+
+
+
+
+
+
+
+
+
+
+
+
 </head>
 <body>
 
@@ -274,6 +219,79 @@ data.forEach(row => {
 }
 }//close createTable()
 </script>
+
+<style>
+:root{
+  --border:#d6d6d6;
+  --text:#1f2937;
+  --bg:#ffffff;
+  --head-bg:#ffffff;
+}
+
+body{
+  margin:0;
+  padding:0;
+  font-family:system-ui,sans-serif;
+  background:var(--bg);
+  color:var(--text);
+}
+
+/* Wrapper per scroll solo se necessario */
+.table-wrapper{
+  width:100%;
+  overflow-x:auto;
+  padding-bottom:100px;
+}
+
+/* Tabella responsive */
+.db-plan{
+  width:100%;
+  border-collapse:collapse;
+  border:1px solid var(--border);
+  table-layout:auto; /* adattabile */
+}
+
+.db-plan  th:nth-child(1),
+.db-plan  td:nth-child(1){
+  display: none;
+}
+
+/* Intestazioni */
+.db-plan th{
+  background:var(--head-bg);
+  border:1px solid var(--border);
+  padding:.5rem;
+  text-align:left;
+  vertical-align:middle;
+  font-weight:600;
+  white-space:normal; /* permette a capo */
+}
+
+/* Seconda riga centrata */
+.db-plan thead tr:nth-child(2) th{text-align:center;}
+
+/* Celle corpo */
+.db-plan td{
+  border:1px solid var(--border);
+  padding:.5rem;
+  text-align:center;
+  white-space:normal; /* permette a capo */
+}
+
+
+
+/* Altezza minima righe */
+.db-plan tr{height:2rem;}
+
+/* Responsive per schermi piccoli */
+@media (max-width: 768px){
+  .db-plan th, .db-plan td{
+    padding:0.25rem;
+    font-size:0.85rem;
+  }
+}
+
+</style>
 
 </body>
 </html>
