@@ -65,7 +65,16 @@
 
     /* CSS for Navbar end */
 
+
+
+
     /*css for content start */
+    
+.inclined {
+  transform: rotate(-45deg);
+  white-space: nowrap; /* evita il ritorno a capo */
+}
+
     :root {
       --border: #d6d6d6;
       --text: #1f2937;
@@ -85,7 +94,7 @@
     .table-wrapper {
       width: 100%;
       overflow-x: auto;
-      padding-bottom: 100px;
+      padding-bottom: 50px;
     }
 
     /* Tabella responsive */
@@ -105,7 +114,7 @@
     /* Intestazioni */
     .db-plan th {
       background: var(--head-bg);
-      border: 1px solid var(--border);
+      border: 4px solid var(--border);
       padding: .5rem;
       text-align: left;
       vertical-align: middle;
@@ -113,6 +122,8 @@
       white-space: normal;
       /* permette a capo */
     }
+    
+
 
     /* Seconda riga centrata */
     .db-plan thead tr:nth-child(2) th {
@@ -151,7 +162,7 @@
 <body>
 
   <!-- Navbar start -->
-  <nav class="nav">
+  <nav class="nav">Dresden Neustadt
     <div id="selected">Tag</div>
     <button id="menuBtn">WT ▼</button>
     <div id="dayMenu" class="dropdown">
@@ -177,8 +188,13 @@
   <!-- Navbar END -->
 
 </body>
-
 <script>
+window.onerror = function(msg, url, line, col, error) {
+  alert("Errore JS: " + msg + "\nIn " + url + " (riga " + line + ")");
+};
+
+
+
   /* Script for Navbar start */
   const menuBtn = document.getElementById('menuBtn');
   const menu = document.getElementById('dayMenu');
@@ -352,6 +368,51 @@ mittwochtabelle[2] = `[
 
 
 
+donnerstagtabelle[0] = `[
+  ["Dresden-Neustadt", "", "Frühdienst", " 07:00-13:00", "Präsenzreinigung", 6, "Std","",["npktime_0700_1300"],"P1","","32"]
+]`;
+
+donnerstagtabelle[1]= `[
+ ["Dresden-Neustadt","Unterführung","Durchgang A (Aufzug)","beide Treppen","Treppe","77,28","m²","",["time_0600_0700"],"P1.1","","34"],
+ ["Dresden-Neustadt","Unterführung","Durchgang B","beide Treppen","Treppe","77,28","m²","",["time_0600_0700"],"P1.1","","34"]
+]`;
+
+donnerstagtabelle[2] = `[
+ ["Dresden-Neustadt","Vorplätze","Vorplatz","Abfallbehälter","","2","Stk.","",["time_0600_0900"],"1","","2a"],
+  ["Dresden-Neustadt","Bahnsteige","5 und 6","Abfallbehälter","","7","Stk.","",["time_0600_0900"],"1","","2a"],
+  ["Dresden-Neustadt","Bahnsteige","7 und 8","Abfallbehälter","","8","Stk.","",["time_0600_0900"],"1","","2a"],
+  ["Dresden-Neustadt","Bahnsteige","1 und 2","Abfallbehälter","","3","Stk.","",["time_0600_0900"],"1","","2a"],
+  ["Dresden-Neustadt","Bahnsteige","3 und 4","Abfallbehälter","","4","Stk.","",["time_0600_0900"],"1","","2a"],
+  ["Dresden-Neustadt","Unterführung","Durchgang A (Aufzug)","Abfallbehälter","","3","Stk.","",["time_0600_0900"],"1","","2a"],
+  ["Dresden-Neustadt","Unterführung","Durchgang B","Abfallbehälter","","3","Stk.","",["time_0600_0900"],"1","","2a"],
+  ["Dresden-Neustadt","Empfangshalle","Empfangshalle","Abfallbehälter","","3","Stk.","",["time_0600_0900"],"1","","2a"],
+  ["Dresden-Neustadt","Vorplätze","Vorplatz","Aschenbecher","","1","Stk.","",["time_0600_0900"],"1","","2a"],
+  ["Dresden-Neustadt","Bahnsteige","1 und 2","Aschenbecher","","1","Stk.","",["time_0600_0900"],"1","","2a"],
+  ["Dresden-Neustadt","Empfangshalle","Gang Backwerk","Boden","","87","m²","",["time_0600_0900"],"1","","23"],
+  ["Dresden-Neustadt","Bahnsteige","7 und 8","Boden","innerhalb der Halle","626,5","m²","",["time_0600_0900"],"1","","31"],
+  ["Dresden-Neustadt","Bahnsteige","3 und 4","Boden","innerhalb der Halle","836","m²","",["time_0600_0900"],"1","","31"],
+  ["Dresden-Neustadt","Bahnsteige","7 und 8","Boden","außerhalb der Halle","988","m²","",["time_0600_0900"],"1","","31"],
+  ["Dresden-Neustadt","Bahnsteige","5 und 6","Boden","außerhalb der Halle","783","m²","",["time_0600_0900"],"1","","31"],
+  ["Dresden-Neustadt","Unterführung","Durchgang B","Boden","","427","m²","",["time_0600_0900"],"1","","29"],
+  ["Dresden-Neustadt","Empfangshalle","Empfangshalle","Boden","","1303","m²","",["time_0600_0900"],"1","","31"],
+  ["Dresden-Neustadt","Vorplätze","Vorplatz/Eingang BM","Abfallbehälter","","1","Stk.","",["time_0600_0900"],"1","","2a"],
+  ["Dresden-Neustadt","Empfangshalle","Warteraum","Abfallbehälter","","1","Stk.","",["time_0600_0900"],"1","","2a"]
+]`;
+
+donnerstagtabelle[3]=`[
+  
+  ["Dresden-Neustadt","Bahnsteige","1 und 2","Fenster/Tür WSH beidseitig","Glasflächen","16,6","m²","",["time_0930_1400"],"1","","18a"],
+  ["Dresden-Neustadt","Bahnsteige","3 und 4","Fenster/Tür WSH beidseitig","Glasflächen","16,6","m²","",["time_0930_1400"],"1","","18a"],
+  ["Dresden-Neustadt","Bahnsteige","7 und 8","Fenster/Türen WSH beidseitig","Glasflächen","33,3","m²","",["time_0930_1400"],"1","","18a"],
+  ["Dresden-Neustadt","Bahnsteige","5 und 6","Glaswand mit Sitzgr. (Ri Rdb)","Glasflächen","22","m²","",["time_0930_1400"],"1","","18a"],
+  ["Dresden-Neustadt","Bahnsteige","5 und 6","WSH (außerhalb der Halle)","Glasflächen","66,55","m²","",["time_0930_1400"],"1","","18a"],
+  ["Dresden-Neustadt","Bahnsteige","5 und 6","Glaswand mit Sitzgr. (Bstg Mitte)","Glasflächen","25,5","m²","",["time_0930_1400"],"1","","18a"],
+  ["Dresden-Neustadt","Bahnsteige","3 und 4","Boden im WSH","Boden","9,1","m²","",["time_0930_1400"],"1","","23"]
+]`;
+
+
+
+
   //////////////////////////////////////////////////////////////////////
   //////////////////////////////////////////////////////////////////////
   ///////////////////      CONTENT TABELLE END       ///////////////////
@@ -384,7 +445,7 @@ mittwochtabelle[2] = `[
         const thead = document.createElement("thead");
 
         // Prima riga intestazioni
-        const tr1 = document.createElement("tr");
+ /*       const tr1 = document.createElement("tr");
         tr1.innerHTML = `
   <th></th>
   <th colspan="2">Dresden-Neustadt</th>
@@ -397,11 +458,12 @@ mittwochtabelle[2] = `[
   <th colspan="3">${wday}</th>
 `;
         thead.appendChild(tr1);
+        */
 
         // Seconda riga intestazioni
         const tr2 = document.createElement("tr");
         tr2.innerHTML = `
-  <th>Ort/Bahnhof</th>
+  <th class="inclined" >Ort/Bahnhof</th>
   <th>Service</th>
   <th>Bereich</th>
   <th>Bemerkung neu</th>
