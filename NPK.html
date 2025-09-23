@@ -14,6 +14,7 @@
       padding-top: 70px
     }
 
+
     .nav {
       position: fixed;
       top: 0;
@@ -25,7 +26,8 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
-      padding: 0 1rem
+      padding: 0 1rem;
+      z-index: 1000;
     }
 
     .dropdown {
@@ -36,8 +38,12 @@
       color: #000;
       border: 1px solid #ccc;
       border-radius: 8px;
-      display: none
+      display: none;
+      opacity: 1;
+      /*z-index: 2000;*/
     }
+    
+    
 
     .dropdown.show {
       display: block
@@ -65,21 +71,41 @@
 
     /* CSS for Navbar end */
 
-
+/*button for lock scroll*/
+    .lock-btn {
+      background: transparent; /* nessuno sfondo */
+      border: none;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #fff; /* icone bianche */
+    }
+    .lock-btn svg {
+      width: 32px;
+      height: 32px;
+    }
+    /* toggle icone */
+    .icon-locked { display: none; }
+    body.locked .icon-locked { display: inline; }
+    body.locked .icon-unlocked { display: none; }
+     
+    body.locked {
+      overflow: hidden;
+      height: 100vh;
+    }
+    
+    
 
 
     /*css for content start */
-    
-.inclined {
-  transform: rotate(-45deg);
-  white-space: nowrap; /* evita il ritorno a capo */
-}
 
     :root {
       --border: #d6d6d6;
       --text: #1f2937;
       --bg: #ffffff;
       --head-bg: #ffffff;
+      --fontsize: 14px;
     }
 
     body {
@@ -88,6 +114,7 @@
       font-family: system-ui, sans-serif;
       background: var(--bg);
       color: var(--text);
+      font-size: var(--fontsize);
     }
 
     /* Wrapper per scroll solo se necessario */
@@ -114,26 +141,36 @@
     /* Intestazioni */
     .db-plan th {
       background: var(--head-bg);
-      border: 4px solid var(--border);
-      padding: .5rem;
-      text-align: left;
-      vertical-align: middle;
+      border: 3px solid var(--border);
+     /* text-align: middle;
+      vertical-align: left;*/
       font-weight: 600;
       white-space: normal;
       /* permette a capo */
+  
+    }
+    .db-plan th span{
+        display:inline-block;
+transform: rotate(180deg);
+  background-color: transparent;
+  /*padding-top: 1.0rem;
+  padding-bottom: 1.0rem;*/
+  text-align: left;
+  vertical-align: bottom;
+  writing-mode: vertical-rl;
     }
     
 
 
     /* Seconda riga centrata */
-    .db-plan thead tr:nth-child(2) th {
+    .db-plan thead tr:nth-child(1) th {
       text-align: center;
     }
 
     /* Celle corpo */
     .db-plan td {
       border: 1px solid var(--border);
-      padding: .5rem;
+      pad
       text-align: center;
       white-space: normal;
       /* permette a capo */
@@ -155,6 +192,7 @@
     }
 
     /* css for content end */
+    
   </style>
 
 </head>
@@ -163,6 +201,37 @@
 
   <!-- Navbar start -->
   <nav class="nav">Dresden Neustadt
+  <span>
+      
+         
+    <button id="lockBtn" class="lock-btn" aria-label="Blocca/sblocca scroll">
+      <!-- Lucchetto aperto (arco completamente girato a destra) -->
+      <svg class="icon-unlocked" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
+           fill="none" stroke="currentColor" stroke-width="2"
+           stroke-linecap="round" stroke-linejoin="round">
+        <!-- corpo -->
+        <rect x="5" y="11" width="14" height="9" rx="2" ry="2"/>
+        <!-- serratura -->
+        <circle cx="12" cy="15.5" r="1.3"/>
+        <!-- arco ruotato tutto a destra -->
+        <path d="M19 7a4 4 0 0 0-4-4h-1"/>
+        <path d="M19 11V7"/>
+      </svg>
+
+      <!-- Lucchetto chiuso -->
+      <svg class="icon-locked" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
+           fill="none" stroke="currentColor" stroke-width="2"
+           stroke-linecap="round" stroke-linejoin="round">
+        <!-- arco chiuso -->
+        <path d="M8 11V8a4 4 0 0 1 8 0v3"/>
+        <!-- corpo -->
+        <rect x="5" y="11" width="14" height="9" rx="2" ry="2"/>
+        <!-- serratura -->
+        <circle cx="12" cy="15.5" r="1.3"/>
+      </svg>
+    </button>
+      
+  </span>
     <div id="selected">Tag</div>
     <button id="menuBtn">WT ▼</button>
     <div id="dayMenu" class="dropdown">
@@ -193,7 +262,7 @@ window.onerror = function(msg, url, line, col, error) {
   alert("Errore JS: " + msg + "\nIn " + url + " (riga " + line + ")");
 };
 
-
+   
 
   /* Script for Navbar start */
   const menuBtn = document.getElementById('menuBtn');
@@ -273,6 +342,8 @@ window.onerror = function(msg, url, line, col, error) {
   //////////////////////////////////////////////////////////////////////
   //////////////////////////////////////////////////////////////////////
 
+//##Mittwoch
+
 mittwochtabelle[0] = `[
   ["Dresden-Neustadt", "", "Frühdienst", " 07:00-13:00", "Präsenzreinigung", 6, "Std","",["npktime_0700_1300"],"P1","","32"]
 ]`;
@@ -340,33 +411,70 @@ mittwochtabelle[2] = `[
 
  mittwochtabelle[4] = `[
 
-  ["Dresden-Neustadt", "Empfangshalle", "Empfangshalle", "Glasfläche Wartebereich", "Glasflächen", "13.14", "m²","",["time_0930_1500"],2,"","18a"],
+  ["Dresden-Neustadt", "Empfangshalle", "Empfangshalle", "Fensterbänke", "Wandfläche bis 3m", "3", "Stk.","",["time_0930_1500"],2,"","17a"],
+
+  ["Dresden-Neustadt", "Empfangshalle", "Empfangshalle", "Glasfläche Wartebereich", "Glasflächen", "13.14", "m²","",["time_0930_1500"],2,"einseitig","18a"],
+  
+    ["Dresden-Neustadt", "Empfangshalle", "vor DG A (Aufzug)", "3 Vitrinen", "Vitrinen", "3", "Stk.","",["time_0930_1500"],2,"","17a"],
+  
+  
+   
+  ["Dresden-Neustadt", "Empfangshalle", "Vitrinen DG A vor Aufzug + DB Infopoint", "1 Vitrine DG Höhe Aufzug + 1 Vitrine Höhe DB Infopoint", "Vitrinen", "2", "Stk.","",["time_0930_1500"],2,"","20"],
+  
+    ["Dresden-Neustadt", "Empfangshalle", "vor DG B", "3 Vitrinen", "Vitrinen", "3", "Stk.","",["time_0930_1500"],2,"","20"],
+
+
   ["Dresden-Neustadt", "Bahnsteige", "1 und 2", "Glaswand mit Sitzgr. (Ri Hbf)", "Glasflächen", "10", "m²","",["time_0930_1500"],2,"","18b"],
+  
+    ["Dresden-Neustadt", "Bahnsteige", "3 und 4", "4 Vitrinen (Sitzgr. Ri Hbf)", "Vitrinen", "4", "Stk.","",["time_0930_1500"],2,"","17a"],
+
   ["Dresden-Neustadt", "Bahnsteige", "3 und 4", "Glaswand mit Sitzgr. (Ri Hbf)", "Glasflächen", "10", "m²","",["time_0930_1500"],2,"","18b"],
   ["Dresden-Neustadt", "Bahnsteige", "3 und 4", "Glaswand mit Sitzgr. (Ri Rdb)", "Glasflächen", "10", "m²","",["time_0930_1500"],2,"","18b"],
-  ["Dresden-Neustadt", "Bahnsteige", "7 und 8", "WSH (außerhalb der Halle)", "Glasflächen", "28,5", "m²","",["time_0930_1500"],2,"","18b"],
-  ["Dresden-Neustadt", "Empfangshalle", "Vitrinen DG A vor Aufzug + DB Infopoint", "1 Vitrine DG Höhe Aufzug + 1 Vitrine Höhe DB Infopoint", "Vitrinen", "2", "Stk.","",["time_0930_1500"],2,"","20"],
-  ["Dresden-Neustadt", "Empfangshalle", "vor DG B", "3 Vitrinen", "Vitrinen", "3", "Stk.","",["time_0930_1500"],2,"","20"],
-  ["Dresden-Neustadt", "Bahnsteige", "5 und 6", "6 Vitrinen (Sitzgr. Ri Rdb)", "Vitrinen", "10.9", "m²","",["time_0930_1500"],2,"","20"],
-  ["Dresden-Neustadt", "Bahnsteige", "3 und 4", "4 Vitrinen (Sitzgr. Ri Hbf)", "Vitrinen", "4", "Stk.","",["time_0930_1500"],2,"","17a"],
+  
+  
+  
+    
+  
+ 
+  
+  
   ["Dresden-Neustadt", "Bahnsteige", "5 und 6", "6 Vitrinen (Sitzgr. Ri Hbf)", "Vitrinen", "2", "Stk.","",["time_0930_1500"],2,"","17a"],
-  ["Dresden-Neustadt", "Bahnsteige", "7 und 8", "6 Vitrinen (Sitzgr. Ri Hbf)", "Vitrinen", "6", "Stk.","",["time_0930_1500"],2,"","17a"],
+  
+
   ["Dresden-Neustadt", "Bahnsteige", "1 und 2", "4 Vitrinen (Sitzgr. Ri Rdb)", "Vitrinen", "4", "Stk.","",["time_0930_1500"],2,"","17a"],
-  ["Dresden-Neustadt", "Empfangshalle", "vor DG A (Aufzug)", "3 Vitrinen", "Vitrinen", "3", "Stk.","",["time_0930_1500"],2,"","17a"],
-  ["Dresden-Neustadt", "Empfangshalle", "vor DG B", "3 Vitrinen", "Vitrinen", "3", "Stk.","",["time_0930_1500"],2,"","17a"],
+  
+
+
+
+  ["Dresden-Neustadt", "Bahnsteige", "1 und 2", "Glaswand mit Sitzgr. (Bstg Mitte)", "Glasflächen", "20", "m²","",["time_0930_1500"],2,"","18a"],
+  
+
+  
+  ["Dresden-Neustadt", "Bahnsteige", "1 und 2", "4 Vitrinen (Sitzgr. Ri Hbf)", "Vitrinen", "4", "Stk.","",["time_0930_1500"],2,"","17a"],
+ 
+  ["Dresden-Neustadt", "Bahnsteige", "1 und 2", "4 Vitrinen (Sitzgr. Ri Rdb)", "Vitrinen", "4", "Stk.","",["time_0930_1500"],2,"","17a"],
+
+
+  ["Dresden-Neustadt", "Bahnsteige", "3 und 4", "4 Vitrinen (Sitzgr. Bstg Mitte)", "Vitrinen", "4", "Stk.","",["time_0930_1500"],2,"","17a"],
+  
+  ["Dresden-Neustadt", "Bahnsteige", "5 und 6", "2 Vitrinen (Sitzgr. Bstg Mitte)", "Vitrinen", "2", "Stk.","",["time_0930_1500"],2,"","17a"],
+  
+    
   ["Dresden-Neustadt", "Bahnsteige", "5 und 6", "6 Vitrinen (Sitzgr. Ri Rdb)", "Vitrinen", "6", "Stk.","",["time_0930_1500"],2,"","17a"],
   
-  ["Dresden-Neustadt", "Bahnsteige", "1 und 2", "Glaswand mit Sitzgr. (Bstg Mitte)", "Glasflächen", "20", "m²","",["time_0930_1500"],2,"","18a"],
-  ["Dresden-Neustadt", "Empfangshalle", "Empfangshalle", "Fensterbänke", "Wandfläche bis 3m", "3", "Stk.","",["time_0930_1500"],2,"","17a"],
-  ["Dresden-Neustadt", "Bahnsteige", "1 und 2", "4 Vitrinen (Sitzgr. Ri Hbf)", "Vitrinen", "4", "Stk.","",["time_0930_1500"],2,"","17a"],
-  ["Dresden-Neustadt", "Bahnsteige", "1 und 2", "4 Vitrinen (Sitzgr. Ri Rdb)", "Vitrinen", "4", "Stk.","",["time_0930_1500"],2,"","17a"],
-  ["Dresden-Neustadt", "Bahnsteige", "3 und 4", "4 Vitrinen (Sitzgr. Bstg Mitte)", "Vitrinen", "4", "Stk.","",["time_0930_1500"],2,"","17a"],
-  ["Dresden-Neustadt", "Bahnsteige", "5 und 6", "2 Vitrinen (Sitzgr. Bstg Mitte)", "Vitrinen", "2", "Stk.","",["time_0930_1500"],2,"","17a"],
+  ["Dresden-Neustadt", "Bahnsteige", "5 und 6", "6 Vitrinen (Sitzgr. Ri Rdb)", "Vitrinen", 
+  "10.9","m²","",["time_0930_1500"],2,"","20"],
+  
+  ["Dresden-Neustadt", "Bahnsteige", "7 und 8", "6 Vitrinen (Sitzgr. Ri Hbf)", "Vitrinen", "6", "Stk.","",["time_0930_1500"],2,"","17a"],
+  
+    ["Dresden-Neustadt", "Bahnsteige", "7 und 8", "WSH (außerhalb der Halle)", "Glasflächen", "28,5", "m²","",["time_0930_1500"],2,"","18b"],
+
+  
   ["Dresden-Neustadt", "Bahnsteige", "7 und 8", "6 Vitrinen (Sitzgr. Ri Rdb)", "Vitrinen", "6", "Stk.","",["time_0930_1500"],2,"","17a"]
 ]`;
 
 
-
+//##Donnerstag
 
 donnerstagtabelle[0] = `[
   ["Dresden-Neustadt", "", "Frühdienst", " 07:00-13:00", "Präsenzreinigung", 6, "Std","",["npktime_0700_1300"],"P1","","32"]
@@ -378,36 +486,73 @@ donnerstagtabelle[1]= `[
 ]`;
 
 donnerstagtabelle[2] = `[
+    ["Dresden-Neustadt","Bahnsteige","3 und 4","Boden im WSH","Boden","9,1","m²","",["time_0600_0900"],"1","","23"],
+
  ["Dresden-Neustadt","Vorplätze","Vorplatz","Abfallbehälter","","2","Stk.","",["time_0600_0900"],"1","","2a"],
-  ["Dresden-Neustadt","Bahnsteige","5 und 6","Abfallbehälter","","7","Stk.","",["time_0600_0900"],"1","","2a"],
+ 
+ 
+  ["Dresden-Neustadt","Vorplätze","Vorplatz","Aschenbecher","","1","Stk.","",["time_0600_0900"],"1","","2a"],
   ["Dresden-Neustadt","Bahnsteige","7 und 8","Abfallbehälter","","8","Stk.","",["time_0600_0900"],"1","","2a"],
+  
+ 
+  ["Dresden-Neustadt","Bahnsteige","5 und 6","Abfallbehälter","","7","Stk.","",["time_0600_0900"],"1","","2a"],
+  
+   ["Dresden-Neustadt","Bahnsteige","3 und 4","Abfallbehälter","","4","Stk.","",["time_0600_0900"],"1","","2a"],
+
+  
   ["Dresden-Neustadt","Bahnsteige","1 und 2","Abfallbehälter","","3","Stk.","",["time_0600_0900"],"1","","2a"],
-  ["Dresden-Neustadt","Bahnsteige","3 und 4","Abfallbehälter","","4","Stk.","",["time_0600_0900"],"1","","2a"],
+    ["Dresden-Neustadt","Bahnsteige","1 und 2","Aschenbecher","","1","Stk.","",["time_0600_0900"],"1","","2a"],
+
+  
+  
+  
+  
   ["Dresden-Neustadt","Unterführung","Durchgang A (Aufzug)","Abfallbehälter","","3","Stk.","",["time_0600_0900"],"1","","2a"],
   ["Dresden-Neustadt","Unterführung","Durchgang B","Abfallbehälter","","3","Stk.","",["time_0600_0900"],"1","","2a"],
   ["Dresden-Neustadt","Empfangshalle","Empfangshalle","Abfallbehälter","","3","Stk.","",["time_0600_0900"],"1","","2a"],
-  ["Dresden-Neustadt","Vorplätze","Vorplatz","Aschenbecher","","1","Stk.","",["time_0600_0900"],"1","","2a"],
-  ["Dresden-Neustadt","Bahnsteige","1 und 2","Aschenbecher","","1","Stk.","",["time_0600_0900"],"1","","2a"],
-  ["Dresden-Neustadt","Empfangshalle","Gang Backwerk","Boden","","87","m²","",["time_0600_0900"],"1","","23"],
+ 
+   ["Dresden-Neustadt","Vorplätze","Vorplatz/Eingang BM","Abfallbehälter","","1","Stk.","",["time_0600_0900"],"1","","2a"],
+  ["Dresden-Neustadt","Empfangshalle","Warteraum","Abfallbehälter","","1","Stk.","",["time_0600_0900"],"1","","2a"],
+
+  
+
+  
+  
+  
+  
   ["Dresden-Neustadt","Bahnsteige","7 und 8","Boden","innerhalb der Halle","626,5","m²","",["time_0600_0900"],"1","","31"],
-  ["Dresden-Neustadt","Bahnsteige","3 und 4","Boden","innerhalb der Halle","836","m²","",["time_0600_0900"],"1","","31"],
-  ["Dresden-Neustadt","Bahnsteige","7 und 8","Boden","außerhalb der Halle","988","m²","",["time_0600_0900"],"1","","31"],
+ 
+   ["Dresden-Neustadt","Bahnsteige","7 und 8","Boden","außerhalb der Halle","988","m²","",["time_0600_0900"],"1","","31"],
+
   ["Dresden-Neustadt","Bahnsteige","5 und 6","Boden","außerhalb der Halle","783","m²","",["time_0600_0900"],"1","","31"],
+
+
+  ["Dresden-Neustadt","Bahnsteige","3 und 4","Boden","innerhalb der Halle","836","m²","",["time_0600_0900"],"1","","31"],
+ 
+ 
+
+
+
+
   ["Dresden-Neustadt","Unterführung","Durchgang B","Boden","","427","m²","",["time_0600_0900"],"1","","29"],
-  ["Dresden-Neustadt","Empfangshalle","Empfangshalle","Boden","","1303","m²","",["time_0600_0900"],"1","","31"],
-  ["Dresden-Neustadt","Vorplätze","Vorplatz/Eingang BM","Abfallbehälter","","1","Stk.","",["time_0600_0900"],"1","","2a"],
-  ["Dresden-Neustadt","Empfangshalle","Warteraum","Abfallbehälter","","1","Stk.","",["time_0600_0900"],"1","","2a"]
+  ["Dresden-Neustadt","Empfangshalle","Empfangshalle","Boden","","1303","m²","",["time_0600_0900"],"1","","31"]
+  
+  
+
 ]`;
 
 donnerstagtabelle[3]=`[
+
+   ["Dresden-Neustadt","Empfangshalle","Gang Backwerk","Boden","","87","m²","",["time_0930_1400"],"1","","23"],
+
   
   ["Dresden-Neustadt","Bahnsteige","1 und 2","Fenster/Tür WSH beidseitig","Glasflächen","16,6","m²","",["time_0930_1400"],"1","","18a"],
   ["Dresden-Neustadt","Bahnsteige","3 und 4","Fenster/Tür WSH beidseitig","Glasflächen","16,6","m²","",["time_0930_1400"],"1","","18a"],
   ["Dresden-Neustadt","Bahnsteige","7 und 8","Fenster/Türen WSH beidseitig","Glasflächen","33,3","m²","",["time_0930_1400"],"1","","18a"],
   ["Dresden-Neustadt","Bahnsteige","5 und 6","Glaswand mit Sitzgr. (Ri Rdb)","Glasflächen","22","m²","",["time_0930_1400"],"1","","18a"],
   ["Dresden-Neustadt","Bahnsteige","5 und 6","WSH (außerhalb der Halle)","Glasflächen","66,55","m²","",["time_0930_1400"],"1","","18a"],
-  ["Dresden-Neustadt","Bahnsteige","5 und 6","Glaswand mit Sitzgr. (Bstg Mitte)","Glasflächen","25,5","m²","",["time_0930_1400"],"1","","18a"],
-  ["Dresden-Neustadt","Bahnsteige","3 und 4","Boden im WSH","Boden","9,1","m²","",["time_0930_1400"],"1","","23"]
+  ["Dresden-Neustadt","Bahnsteige","5 und 6","Glaswand mit Sitzgr. (Bstg Mitte)","Glasflächen","25,5","m²","",["time_0930_1400"],"1","","18a"]
+  
 ]`;
 
 
@@ -463,18 +608,18 @@ donnerstagtabelle[3]=`[
         // Seconda riga intestazioni
         const tr2 = document.createElement("tr");
         tr2.innerHTML = `
-  <th class="inclined" >Ort/Bahnhof</th>
-  <th>Service</th>
-  <th>Bereich</th>
-  <th>Bemerkung neu</th>
-  <th>Inventar</th>
-  <th>Menge</th>
-  <th>Einheit</th>
-  <th>Reihen<br />folge</th>
-  <th>Leistungs-<br />zeit</th>
-  <th>${wday.slice(0, 2)}</th>
-  <th>Bemerkungen</th>
-  <th>Zielbild</th>
+  <th><span>Ort/Bahnhof<span></th>
+  <th><span>Service</span></th>
+  <th><span>Bereich</span></th>
+  <th><span>Bemerkung neu</span></th>
+  <th><span>Inventar</span></th>
+  <th><span>Menge</span></th>
+  <th><span>Einheit</span></th>
+  <th><span>Reihen<br />folge</span></th>
+  <th><span>Leistungs-<br />zeit</span></th>
+  <th><span>${wday.slice(0, 2)}</span></th>
+  <th><span>Bemerkungen</span></th>
+  <th><span>Zielbild</span></th>
 `;
         thead.appendChild(tr2);
 
@@ -527,6 +672,19 @@ donnerstagtabelle[3]=`[
 
   }//close createTable()
   /* script for content end */
+  
+  
+/*script for page scroll*/
+
+     
+      
+    const btn = document.getElementById('lockBtn');
+    btn.addEventListener('click', () => {
+      document.body.classList.toggle('locked');
+    });
+    
+
+ 
 </script>
 
 </html>
