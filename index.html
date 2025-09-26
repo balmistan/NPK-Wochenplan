@@ -21,6 +21,7 @@
     var freitagtabelle = Array();
     var samstagtabelle = Array();
     var sonntagtabelle = Array();
+    var zielbild = new Map();
 
     //////////////////////////////////////////////////////////////////////
     //////////////////////////////////////////////////////////////////////
@@ -165,6 +166,22 @@
 ]`;
 
 
+
+
+
+
+    zielbild.set("2a", { be1: "Nur außen Nassreinigung Abfallbehälter/Aschenbecher", be2: "Behälter sind geleert, bestückt und Oberfläche sind sichtbar schmutzfrei." });
+    zielbild.set("7", { be1: "Handlauf Nassreinigen", be2: "Oberflächen sind frei von haftenden Verschmutzungen einschließlich Kaugummi und Aufkleber Graffiti Verschmutzungen können noch vorhanden sein." });
+    zielbild.set("9", { be1: "Aufzug innen reinigen (ohne vollflächige Glasreinigung / nur Griffspurenentfernung): Tür (innen/außen), Seitenverkleidung (inkl. Decke), Boden, Bedienelement(innen/außen), Griffspurenentfernung an Glasflächen.", be2: "Oberflächen sind frei von haftenden Verschmutzungen einschließlich Kaugummi und Aufkleber Graffiti Verschmutzungen können noch vorhanden sein." });
+    zielbild.set("20", { be1: "Vitrinen Außen", be2: "Oberflächen sind frei von haftenden Verschmutzungen einschließlich Kaugummi und Aufkleber Graffiti Verschmutzungen können noch vorhanden sein." });
+    zielbild.set("23", { be1: "Boden Nassreinigung manuell einstufig bis 101-500 m2", be2: "Oberflächen sind frei von haftenden Verschmutzungen, Gummiabsatzstriche und Kaugummi können noch vorhanden sein." });
+    zielbild.set("29", { be1: "Boden Grobreinigung, manuelle kehren", be2: "Oberfläche ist frei von aufliegendem Schmutz, mit geringen Staubrückständen ist zu rechnen" });
+    zielbild.set("30b", { be1: "Boden Nassreinigung maschinell, AB bis 85 cm", be2: "" });
+    zielbild.set("31", { be1: "Boden Grobreinigung, maschinell, kehren (Vorplatz)", be2: "Oberfläche ist frei von aufliegendem Schmutz, mit geringen Staubrückständen ist zu rechnen, Mindestabnahme pro Objekt 1 Std. pro Auftrag." });
+    zielbild.set("34", { be1: "Treppen Nassreinigung, manuell einstufig", be2: "Oberflächen sind frei von haftenden Verschmutzungen, Gummiabsatzstriche und Kaugummi können noch vorhanden sein." });
+
+
+
     //////////////////////////////////////////////////////////////////////
     //////////////////////////////////////////////////////////////////////
     ///////////////////      CONTENT TABELLE END       ///////////////////
@@ -184,6 +201,7 @@
       margin: 0;
       padding-top: 70px
     }
+
     .nav {
       position: fixed;
       top: 0;
@@ -198,6 +216,7 @@
       padding: 0 1rem;
       z-index: 1000;
     }
+
     .dropdown {
       position: absolute;
       right: 1rem;
@@ -209,25 +228,31 @@
       display: none;
       opacity: 1;
     }
+
     .dropdown.show {
       display: block
     }
+
     .day {
       padding: 8px 12px;
       cursor: pointer
     }
+
     .day:hover {
       background: #eee
     }
+
     .wday {
       display: none;
       padding: 3px;
       margin-top: 100px;
       border: none;
     }
+
     .wday.show {
       display: block
     }
+
     /* CSS for Navbar end */
     /*button for lock scroll*/
     .lock-btn {
@@ -241,24 +266,30 @@
       color: #fff;
       /* icone bianche */
     }
+
     .lock-btn svg {
       width: 32px;
       height: 32px;
     }
+
     /* toggle icone */
     .icon-locked {
       display: none;
     }
+
     body.locked .icon-locked {
       display: inline;
     }
+
     body.locked .icon-unlocked {
       display: none;
     }
+
     body.locked {
       overflow: hidden;
       height: 100vh;
     }
+
     /*css for content start */
     :root {
       --border: #d6d6d6;
@@ -267,6 +298,7 @@
       --head-bg: #ffffff;
       --fontsize: 14px;
     }
+
     body {
       margin: 0;
       padding: 0;
@@ -275,12 +307,14 @@
       color: var(--text);
       font-size: var(--fontsize);
     }
+
     /* Wrapper per scroll solo se necessario */
     .table-wrapper {
       width: 100%;
       overflow-x: auto;
       padding-bottom: 50px;
     }
+
     /* Tabella responsive */
     .db-plan {
       width: 100%;
@@ -289,10 +323,12 @@
       table-layout: auto;
       /* adattabile */
     }
+
     .db-plan th:nth-child(1),
     .db-plan td:nth-child(1) {
       display: none;
     }
+
     /* Intestazioni */
     .db-plan th {
       background: var(--head-bg);
@@ -303,6 +339,7 @@
       white-space: normal;
       /* permette a capo */
     }
+
     .db-plan th span {
       display: inline-block;
       transform: rotate(180deg);
@@ -311,10 +348,12 @@
       vertical-align: bottom;
       writing-mode: vertical-rl;
     }
+
     /* Seconda riga centrata */
     .db-plan thead tr:nth-child(1) th {
       text-align: center;
     }
+
     /* Celle corpo */
     .db-plan td {
       border: 1px solid var(--border);
@@ -322,21 +361,109 @@
       white-space: normal;
       /* permette a capo */
     }
+
     /* Altezza minima righe */
     .db-plan tr {
       height: 2rem;
     }
+
     /* Responsive per schermi piccoli */
     @media (max-width: 768px) {
+
       .db-plan th,
       .db-plan td {
         padding: 0.25rem;
         font-size: 0.85rem;
       }
     }
+
     /* css for content end */
+    /*css code for modal Zielbild*/
+    td[data-code] {
+      color: #000;
+      /* nero */
+      font-weight: 700;
+      /* grassetto */
+      cursor: pointer;
+      /* mantiene il puntatore a mano */
+    }
+
+    /* Modal styles */
+    .modal {
+      display: none;
+      /* hidden by default */
+      position: fixed;
+      z-index: 1000;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      overflow-y: auto;
+      background-color: rgba(0, 0, 0, 0.5);
+    }
+
+    .modal-content {
+      background-color: #fff;
+      margin: 10% auto;
+      padding: 20px;
+      border-radius: 12px;
+      max-width: 90%;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+      position: relative;
+      animation: fadeIn 0.3s ease-in-out;
+    }
+
+    .close-btn {
+      position: absolute;
+      top: 12px;
+      right: 12px;
+      background: #ff5c5c;
+      color: #fff;
+      border: none;
+      border-radius: 50%;
+      width: 32px;
+      height: 32px;
+      font-size: 18px;
+      cursor: pointer;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(-20px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .modal-content u {
+      color: #555;
+    }
+
+    #modalText .code-title {
+      font-weight: 700;
+      /* grassetto */
+      font-size: 1.1em;
+      margin-bottom: 12px;
+    }
+
+    #modalText .beschreibung-title {
+      font-weight: 700;
+      /* grassetto */
+      margin-bottom: 8px;
+      /* spazio sotto */
+    }
+
+    #modalText p {
+      margin: 8px 0;
+      line-height: 1.4;
+    }
   </style>
 </head>
+
 <body>
   <!-- Navbar start -->
   <nav class="nav">
@@ -437,11 +564,11 @@
     createTable(montagtabelle, "Montag", "montag-id");
     createTable(dienstagtabelle, "Dienstag", "dienstag-id");
     createTable(mittwochtabelle, "Mittwoch", "mittwoch-id");
-    createTable(donnerstagtabelle, "Donnerstag", "donnerstag-id"); 
+    createTable(donnerstagtabelle, "Donnerstag", "donnerstag-id");
     createTable(mittwochtabelle, "Freitag", "freitag-id");
     createTable(mittwochtabelle, "Samstag", "samstag-id");
     createTable(mittwochtabelle, "Sonntag", "sonntag-id");
-   
+
     function createTable(datacontent, wday, wdayid) {
       if (datacontent.length) {
         for (let tableindex = 0; tableindex < datacontent.length; tableindex++) {
@@ -453,7 +580,7 @@
           table.className = "db-plan";
           // Crea thead
           const thead = document.createElement("thead");
-         
+
           // Riga intestazioni
           const tr1 = document.createElement("tr");
           tr1.innerHTML = `
@@ -500,7 +627,12 @@
                   td.style.color = dati.colore;
                 }
               } else {
-                td.textContent = cell;
+                 td.textContent = cell;
+                if (index ===11) {
+                  td.dataset.code = cell;
+                  //alert(cell)
+                }
+               
               }
               tr.appendChild(td);
             });
@@ -509,7 +641,6 @@
         }// close if datacontent.length
 
       }
-
     }//close createTable()
     /* script for content end */
     /*script for page scroll*/
@@ -517,6 +648,50 @@
     btn.addEventListener('click', () => {
       document.body.classList.toggle('locked');
     });
+
+    
+
   </script>
+  <!-- Modal -->
+<div id="codeModal" class="modal">
+  <div class="modal-content">
+    <button class="close-btn" id="closeModal">&times;</button>
+    <div id="modalText"></div>
+  </div>
+</div>
+<script>
+//for modal Zielbild
+    // Event listeners
+document.querySelectorAll("td[data-code]").forEach(td => {
+  td.addEventListener("click", function() {
+    let code = td.getAttribute("data-code");
+    
+    if (zielbild.has(code)) {
+      let info = zielbild.get(code);
+      alert(info);
+      // Usiamo <p> per creare distanza tra le righe
+      document.getElementById("modalText").innerHTML = `
+        <p class="code-title">Zielbild ${code}</p>
+<p class="beschreibung-title">${info.be1}</p>
+<p>${info.be2}</p>
+      `;
+      document.getElementById("codeModal").style.display = "block";
+    }
+  });
+});
+
+// Close modal
+document.getElementById("closeModal").addEventListener("click", function() {
+  document.getElementById("codeModal").style.display = "none";
+});
+
+// Close modal clicking outside content
+window.addEventListener("click", function(e) {
+  if (e.target == document.getElementById("codeModal")) {
+    document.getElementById("codeModal").style.display = "none";
+  }
+});
+</script>
 </body>
+
 </html>
