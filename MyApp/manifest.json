@@ -1,0 +1,23 @@
+{
+  "name": "NPK - Wochenplan",
+  "short_name": "NPK",
+  "description": "App zur Anzeige und Verwaltung des NPK Arbeitsplans.",
+  "start_url": "NPK.html",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#000000",
+  "orientation": "portrait",
+  "icons": [
+    {
+      "src": "icons/NPK-192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "icons/NPK-512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}
+
