@@ -806,7 +806,7 @@
         .wday {
             display: none;
             padding: 3px;
-            margin-top: 100px;
+            margin-top: 75px;
             border: none;
         }
         .wday.show {
@@ -814,7 +814,7 @@
         }
 
         /* css for fullscreen button in navbar */
-
+/*
         #fullscreen-btn {
 
             background: transparent;
@@ -852,7 +852,7 @@
         body.fullscreen .icon-exit {
             display: inline;
         }
-
+*/
 
         /*button for lock scroll*/
         .lock-btn {
@@ -945,18 +945,24 @@
             border: 1px solid var(--border);
             text-align: center;
             white-space: normal;
-            /* permette a capo */
+            overflow-wrap: break-word;
+            max-width: 40px;
         }
 
         .db-plan tr {
             height: 2rem;
+        }
+        
+        .db-plan th:nth-child(7),
+        .db-plan td:nth-child(7) {
+            display: none;
         }
 
         /* Responsive für kleinen Bildschirm */
         @media (max-width: 768px) {
             .db-plan th,
             .db-plan td {
-                padding: 0.25rem;
+                padding: 0.1rem;
                 font-size: 0.85rem;
             }
         }
@@ -1048,20 +1054,18 @@
 
     <!-- Navbar start -->
     <nav class="nav">
-        <span>
+       <!-- <span>
             <button id="fullscreen-btn" aria-label="Fullscreen">
-                <!-- icon fullscreen ein-->
                 <svg class="icon-enter" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
                     <path d="M4 4h6v2H6v4H4V4zm10 0h6v6h-2V6h-4V4zM4 14h2v4h4v2H4v-6zm14 4v-4h2v6h-6v-2h4z" />
                 </svg>
 
-                <!-- icon fullscreen aus -->
                 <svg class="icon-exit" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
                     <path d="M6 6h4v2H8v2H6V6zm8 0h4v4h-2V8h-2V6zM6 14h2v2h2v2H6v-4zm8 0h4v4h-2v-2h-2v-2z" />
                 </svg>
             </svg>
         </button>
-    </span>
+    </span> -->
     <span>
         <button id="lockBtn" class="lock-btn" aria-label="Blocca/sblocca scroll">
             <!-- Vorhängeschloss auf -->
@@ -1328,7 +1332,7 @@
     });
 
     /* For fullscreen */
-
+/*
     const btnfs = document.getElementById('fullscreen-btn');
 
     btnfs.addEventListener('click', () => {
@@ -1342,6 +1346,7 @@
     document.addEventListener('fullscreenchange', () => {
         document.body.classList.toggle('fullscreen', !!document.fullscreenElement);
     });
+*/
 </script>
 
 </body>
