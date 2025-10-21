@@ -51,7 +51,7 @@
                 text: "21:00-22:15",
                 farbe: "orange"
             },
-             zeit_2345_0445: {
+            zeit_2345_0445: {
                 text: "23:45-04:45",
                 farbe: "black"
             },
@@ -123,8 +123,8 @@
         montagtabelle[2] = `[
         ["", "Spätdienst", " 15:00 21:00", "Präsenzreinigung", 6, "Std", "", ["npkzeit_1500_2100"], "P2", "", "32"]
         ]`;
-        
-         montagtabelle[3] = `[
+
+        montagtabelle[3] = `[
         ["Bahnsteige","5 und 6","innerhalb der Halle","Boden",1334,"m²","",["zeit_2345_0445"],"N","","30b"],
         ["Bahnsteige","3 und 4","innerhalb der Halle","Boden",1672,"m²","",["zeit_2345_0445"],"N","","30b"],
         ["Bahnsteige","1 und 2","innerhalb der Halle","Boden",1404,"m²","",["zeit_2345_0445"],"N","","30b"],
@@ -172,12 +172,12 @@
         dienstagtabelle[2] = `[
         ["", "Spätdienst", " 15:00 21:00", "Präsenzreinigung", 6, "Std", "", ["npkzeit_1500_2100"], "P2", "", "32"]
         ]`;
-        
-         dienstagtabelle[3] = `[
+
+        dienstagtabelle[3] = `[
         ["Bahnsteige","7 und 8","innerhalb der Halle","Boden",1253,"m²","",["zeit_2345_0445"],"N","","30b"],
         ["Bahnsteige","3 und 4","innerhalb der Halle","Boden",1672,"m²","",["zeit_2345_0445"],"N","","30b"],
         ["Bahnsteige","1 und 2","innerhalb der Halle","Boden",1404,"m²","",["zeit_2345_0445"],"N","","30b"]
-      
+
         ]`;
 
 
@@ -312,8 +312,8 @@
         donnerstagtabelle[2] = `[
         ["", "Spätdienst", " 15:00 21:00", "Präsenzreinigung", 6, "Std", "", ["npkzeit_1500_2100"], "P2", "", "32"]
         ]`;
-        
-         donnerstagtabelle[3] = `[
+
+        donnerstagtabelle[3] = `[
         ["Bahnsteige","7 und 8","innerhalb der Halle","Boden",1253,"m²","",["zeit_2345_0445"],"N","","30b"],
         ["Bahnsteige","3 und 4","innerhalb der Halle","Boden",1672,"m²","",["zeit_2345_0445"],"N","","30b"],
         ["Bahnsteige","1 und 2","innerhalb der Halle","Boden",1404,"m²","",["zeit_2345_0445"],"N","","30b"]
@@ -371,12 +371,12 @@
         ["Empfangshalle","Eingangstüren (Glas)","Eingangstüren Vorplatz.","Glasflächen","16","m²","",["zeit_0930_1400"],"1","","18b"],
         ["Bahnsteige","5 und 6","Boden","innerhalb der Halle","667","m²","",["zeit_0930_1400"],"1","","31"]
         ]`;
-        
+
         freitagtabelle[2] = `[
         ["", "Spätdienst", " 15:00 21:00", "Präsenzreinigung", 6, "Std", "", ["npkzeit_1500_2100"], "P2", "", "32"]
         ]`;
-        
-         freitagtabelle[3] = `[
+
+        freitagtabelle[3] = `[
         ["Bahnsteige","5 und 6","innerhalb der Halle","Boden",1334,"m²","",["zeit_2345_0445"],"N","","30b"],
         ["Bahnsteige","3 und 4","innerhalb der Halle","Boden",1672,"m²","",["zeit_2345_0445"],"N","","30b"],
         ["Bahnsteige","1 und 2","innerhalb der Halle","Boden",1404,"m²","",["zeit_2345_0445"],"N","","30b"],
@@ -476,7 +476,7 @@
             be3: "Sitzmöbel feucht reinigen",
             be4: "Oberflächen sind frei von lose aufliegenden Verschmutzungen und staubfrei"
         });
-
+/*
         zielbild.set("5", {
             be1: "Sitzmöbel nass reinigen",
             be2: "Sichtbar schmutzfrei, frei von haftenden Verschmutzungen.",
@@ -492,14 +492,14 @@
             be4: "Stationsreinigung",
             be5: "Wände, Fliesen, Sicht-Feinreinigung"
         });
-
+*/
         zielbild.set("7", {
             be1: "Ausstattungsgegenstände",
             be2: "Stationsreinigung",
             be3: "Handlauf, nass reinigen",
             be4: "Oberflächen sind frei von haftenden Verschmutzungen, einschließlich Kaugummi und Aufkleber. Graffitiverschmutzungen können noch vorhanden sein."
         });
-
+/*
         zielbild.set("8", {
             be1: "Glasierte Wandfliesen feucht reinigen",
             be2: "Oberflächen sind frei von haftenden Verschmutzungen einschließlich Kaugummi und Aufkleber. Glasflächen sichtbar sauber.",
@@ -507,15 +507,14 @@
             be4: "Stationsreinigung",
             be5: "Glasierte Wandfliesen (ohne Glasflächen), manuell feucht reinigen"
         });
-
+*/
         zielbild.set("9", {
-            be1: "Aufzug innen komplett reinigen",
-            be2: "Oberflächen sind frei von haftenden Verschmutzungen einschließlich Kaugummi und Aufkleber. Glasflächen sichtbar sauber.",
-            be3: "Ausstattungsgegenstände",
-            be4: "Stationsreinigung",
-            be5: "Aufzug innen reinigen (Türinnenflächen, Seitenwandverkleidung inkl. Decke, Boden, Spiegelwand, Handläufe, Griffstangenverkleidung, Griffstangen)"
+            be1: "Ausstattungsgegenstände",
+            be2: "Stationsreinigung",
+            be3: "Aufzug innen reinigen: (Tür innen/außen), Seitenwandverkleidung (inkl. Decke), Boden, Bedienelement (innen/außen), Griffspurenentfernun an Glasflächen",
+            be4: "Oberflächen sind frei von haftenden Verschmutzungen einschließlich Kaugummi und Aufkleber. Graffitiverschmutzungen können noch vorhanden sein"
         });
-
+/*
         zielbild.set("10", {
             be1: "Fahrtreppen Handlauf/Antriebsband reinigen",
             be2: "Oberflächen sind frei von haftenden Verschmutzungen einschließlich Kaugummi und Aufkleber. Glasflächen sichtbar sauber.",
@@ -579,7 +578,7 @@
             be4: "Stationsreinigung",
             be5: "Oberflächen von Einzelelementen nass reinigen, ab 12qm bis ca. 1qm"
         });
-
+*/
 
         zielbild.set("17a", {
             be1: "Ausstattungsgegenstände",
@@ -608,7 +607,7 @@
             be3: "Glasreinigung sonstige Glasflächen (zweiseitig), geringer Aufwand",
             be4: "Oberflächen sind frei von haftenden Verschmutzungen, einschließlich Kaugummi und Aufkleber. Graffitiverschmutzungen können noch vorhanden sein.",
         });
-
+/*
         zielbild.set("18c", {
             be1: "Glasflächen Reinigung bei Erschwernis (z.B. Leiter/Arbeitsbühne)",
             be2: "Oberflächen sind frei von haftenden Verschmutzungen einschließlich Kaugummi und Aufkleber. Graffitoverschmutzungen können noch vorhanden sein.",
@@ -624,7 +623,7 @@
             be4: "Glasreinigung",
             be5: "Glasflächenreinigung, sehr hoher Aufwand (Erschwernis: z.B. Leiter/Arbeitsbühne, Überdachungen, Wintergärten etc.)"
         });
-
+*/
 
         zielbild.set("20", {
             be1: "Fenster und sonstige / Stück - Glasflächen",
@@ -632,7 +631,7 @@
             be3: "Vitrinen außen",
             be4: "Oberflächen sind frei von haftenden Verschmutzungen einschließlich Kaugummi und Aufkleber. Graffitoverschmutzungen können noch vorhanden sein."
         });
-
+/*
         zielbild.set("21", {
             be1: "Boden Grobreinigung manuell, sichtbarer Fläche",
             be2: "Oberflächen frei von aufliegender Müll.",
@@ -640,7 +639,7 @@
             be4: "Stationsreinigung",
             be5: "Boden Grobreinigung manuell, sichtbarer Fläche"
         });
-
+*/
         zielbild.set("22", {
             be1: "Fußböden, manuell",
             be2: "Stationsreinigung",
@@ -654,7 +653,7 @@
             be3: "Boden Nassreinigung manuell, einstufig, bis 101 - 500 m²",
             be4: "Oberflächen sind frei von haftenden Verschmutzungen. Gummiabsatzstriche und Kaugummi können noch vorhanden sein."
         });
-
+/*
         zielbild.set("24", {
             be1: "Boden Nassreinigung manuell, Fläche 100–200 m²",
             be2: "Oberflächen sind frei von haftenden Verschmutzungen. Gummierungsspuren und Kratzer können noch sichtbar sein.",
@@ -702,14 +701,14 @@
             be4: "Stationsreinigung",
             be5: "Andere Reinigungen, maschinell, Arbeitsbereiche bis 10 m², Mindestabnahme 10 m², inkl. Objekt, pro Auftrag"
         });
-
+*/
         zielbild.set("29", {
             be1: "Fußböden manuell",
             be2: "Stationsreinigung",
             be3: "Boden Grobreinigung, manuell, kehren",
             be4: "Oberfläche ist frei von aufliegendem Schmutz, mit geringen Staubrückständen ist zu rechnen"
         });
-
+/*
         zielbild.set("30", {
             be1: "Boden maschinell reinigen, Fläche 50–100 m²",
             be2: "Oberflächen sind frei von haftenden Verschmutzungen. Gummierungsspuren können noch sichtbar sein.",
@@ -718,7 +717,7 @@
             be5: "Boden Nassreinigung maschinell, einmalig ab 50 bis 100 m²"
         });
 
-
+*/
         zielbild.set("30b", {
             be1: "Fußböden, maschinell reinigen",
             be2: "Stationsreinigung",
@@ -814,7 +813,7 @@
         }
 
         /* css for fullscreen button in navbar */
-/*
+        /*
         #fullscreen-btn {
 
             background: transparent;
@@ -952,7 +951,7 @@
         .db-plan tr {
             height: 2rem;
         }
-        
+
         .db-plan th:nth-child(7),
         .db-plan td:nth-child(7) {
             display: none;
@@ -1054,285 +1053,285 @@
 
     <!-- Navbar start -->
     <nav class="nav">
-       <!-- <span>
-            <button id="fullscreen-btn" aria-label="Fullscreen">
-                <svg class="icon-enter" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                    <path d="M4 4h6v2H6v4H4V4zm10 0h6v6h-2V6h-4V4zM4 14h2v4h4v2H4v-6zm14 4v-4h2v6h-6v-2h4z" />
+        <!-- <span>
+                    <button id="fullscreen-btn" aria-label="Fullscreen">
+                        <svg class="icon-enter" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                            <path d="M4 4h6v2H6v4H4V4zm10 0h6v6h-2V6h-4V4zM4 14h2v4h4v2H4v-6zm14 4v-4h2v6h-6v-2h4z" />
+                        </svg>
+
+                        <svg class="icon-exit" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                            <path d="M6 6h4v2H8v2H6V6zm8 0h4v4h-2V8h-2V6zM6 14h2v2h2v2H6v-4zm8 0h4v4h-2v-2h-2v-2z" />
+                        </svg>
+                    </svg>
+                </button>
+            </span> -->
+        <span>
+            <button id="lockBtn" class="lock-btn" aria-label="Blocca/sblocca scroll">
+                <!-- Vorhängeschloss auf -->
+                <svg class="icon-unlocked" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <rect x="5" y="11" width="14" height="9" rx="2" ry="2" />
+                    <circle cx="12" cy="15.5" r="1.3" />
+                    <path d="M19 7a4 4 0 0 0-4-4h-1" />
+                    <path d="M19 11V7" />
                 </svg>
-
-                <svg class="icon-exit" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                    <path d="M6 6h4v2H8v2H6V6zm8 0h4v4h-2V8h-2V6zM6 14h2v2h2v2H6v-4zm8 0h4v4h-2v-2h-2v-2z" />
+                <!-- Vorhängeschloss zu -->
+                <svg class="icon-locked" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M8 11V8a4 4 0 0 1 8 0v3" />
+                    <rect x="5" y="11" width="14" height="9" rx="2" ry="2" />
+                    <circle cx="12" cy="15.5" r="1.3" />
                 </svg>
-            </svg>
-        </button>
-    </span> -->
-    <span>
-        <button id="lockBtn" class="lock-btn" aria-label="Blocca/sblocca scroll">
-            <!-- Vorhängeschloss auf -->
-            <svg class="icon-unlocked" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
-                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <rect x="5" y="11" width="14" height="9" rx="2" ry="2" />
-                <circle cx="12" cy="15.5" r="1.3" />
-                <path d="M19 7a4 4 0 0 0-4-4h-1" />
-                <path d="M19 11V7" />
-            </svg>
-            <!-- Vorhängeschloss zu -->
-            <svg class="icon-locked" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
-                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M8 11V8a4 4 0 0 1 8 0v3" />
-                <rect x="5" y="11" width="14" height="9" rx="2" ry="2" />
-                <circle cx="12" cy="15.5" r="1.3" />
-            </svg>
-        </button>
-    </span>Dresden Neustadt
-    <div id="selected">
-        Tag
+            </button>
+        </span>Dresden Neustadt
+        <div id="selected">
+            Tag
+        </div>
+        <button id="menuBtn">WT ▼</button>
+        <div id="dayMenu" class="dropdown">
+            <div class="day" data-day="Montag" data-id="montag-id">
+                Montag
+            </div>
+            <div class="day" data-day="Dienstag" data-id="dienstag-id">
+                Dienstag
+            </div>
+            <div class="day" data-day="Mittwoch" data-id="mittwoch-id">
+                Mittwoch
+            </div>
+            <div class="day" data-day="Donnerstag" data-id="donnerstag-id">
+                Donnerstag
+            </div>
+            <div class="day" data-day="Freitag" data-id="freitag-id">
+                Freitag
+            </div>
+            <div class="day" data-day="Samstag" data-id="samstag-id">
+                Samstag
+            </div>
+            <div class="day" data-day="Sonntag" data-id="sonntag-id">
+                Sonntag
+            </div>
+        </div>
+    </nav>
+
+
+    <div id="scroll-area">
+
+
+        <!-- 7 div für Tage - Inhalt -->
+        <div id="montag-id" class="wday"></div>
+        <div id="dienstag-id" class="wday"></div>
+        <div id="mittwoch-id" class="wday"></div>
+        <div id="donnerstag-id" class="wday"></div>
+        <div id="freitag-id" class="wday"></div>
+        <div id="samstag-id" class="wday"></div>
+        <div id="sonntag-id" class="wday"></div>
+
     </div>
-    <button id="menuBtn">WT ▼</button>
-    <div id="dayMenu" class="dropdown">
-        <div class="day" data-day="Montag" data-id="montag-id">
-            Montag
-        </div>
-        <div class="day" data-day="Dienstag" data-id="dienstag-id">
-            Dienstag
-        </div>
-        <div class="day" data-day="Mittwoch" data-id="mittwoch-id">
-            Mittwoch
-        </div>
-        <div class="day" data-day="Donnerstag" data-id="donnerstag-id">
-            Donnerstag
-        </div>
-        <div class="day" data-day="Freitag" data-id="freitag-id">
-            Freitag
-        </div>
-        <div class="day" data-day="Samstag" data-id="samstag-id">
-            Samstag
-        </div>
-        <div class="day" data-day="Sonntag" data-id="sonntag-id">
-            Sonntag
-        </div>
-    </div>
-</nav>
 
 
-<div id="scroll-area">
-
-
-    <!-- 7 div für Tage - Inhalt -->
-    <div id="montag-id" class="wday"></div>
-    <div id="dienstag-id" class="wday"></div>
-    <div id="mittwoch-id" class="wday"></div>
-    <div id="donnerstag-id" class="wday"></div>
-    <div id="freitag-id" class="wday"></div>
-    <div id="samstag-id" class="wday"></div>
-    <div id="sonntag-id" class="wday"></div>
-
-</div>
-
-
-<script>
-    window.onerror = function (msg, url, line, col, error) {
-        alert("Error JS: " + msg + "\nIn " + url + " (riga " + line + ")");
-    };
-    /* Script für Navbar fängt hier an */
-    const menuBtn = document.getElementById('menuBtn');
-    const menu = document.getElementById('dayMenu');
-    const selected = document.getElementById('selected');
-    const dayDivs = document.querySelectorAll('.wday');
-    // Zeigt nur das entsprechende div
-    function showDay(id, name) {
-        dayDivs.forEach(div => div.classList.remove('show'));
-        const target = document.getElementById(id);
-        if (target) target.classList.add('show');
-        selected.textContent = name;
-        localStorage.setItem('selectedDay', JSON.stringify({
-            id, name
-        }));
-        menu.classList.remove('show');
-    }
-    // Toggle menu
-    menuBtn.addEventListener('click', () => {
-        menu.classList.toggle('show');
-    });
-    //select Tag
-    menu.querySelectorAll('.day').forEach(item => {
-        item.addEventListener('click', () => {
-            showDay(item.dataset.id, item.dataset.day);
-        });
-    });
-    // das Menü schließt sich durch Klicken außerhalb
-    document.addEventListener('click', (e) => {
-        if (!menu.contains(e.target) && !menuBtn.contains(e.target)) {
+    <script>
+        window.onerror = function (msg, url, line, col, error) {
+            alert("Error JS: " + msg + "\nIn " + url + " (riga " + line + ")");
+        };
+        /* Script für Navbar fängt hier an */
+        const menuBtn = document.getElementById('menuBtn');
+        const menu = document.getElementById('dayMenu');
+        const selected = document.getElementById('selected');
+        const dayDivs = document.querySelectorAll('.wday');
+        // Zeigt nur das entsprechende div
+        function showDay(id, name) {
+            dayDivs.forEach(div => div.classList.remove('show'));
+            const target = document.getElementById(id);
+            if (target) target.classList.add('show');
+            selected.textContent = name;
+            localStorage.setItem('selectedDay', JSON.stringify({
+                id, name
+            }));
             menu.classList.remove('show');
         }
-    });
+        // Toggle menu
+        menuBtn.addEventListener('click', () => {
+            menu.classList.toggle('show');
+        });
+        //select Tag
+        menu.querySelectorAll('.day').forEach(item => {
+            item.addEventListener('click', () => {
+                showDay(item.dataset.id, item.dataset.day);
+            });
+        });
+        // das Menü schließt sich durch Klicken außerhalb
+        document.addEventListener('click', (e) => {
+            if (!menu.contains(e.target) && !menuBtn.contains(e.target)) {
+                menu.classList.remove('show');
+            }
+        });
 
-    window.addEventListener('DOMContentLoaded', () => {
-        const saved = localStorage.getItem('selectedDay');
-        if (saved) {
-            try {
-                const {
-                    id,
-                    name
-                } = JSON.parse(saved);
-                showDay(id, name);
-            } catch (e) {
-                console.warn("Errore JSON.parse(saved):", e);
-                // fallback al giorno corrente
+        window.addEventListener('DOMContentLoaded', () => {
+            const saved = localStorage.getItem('selectedDay');
+            if (saved) {
+                try {
+                    const {
+                        id,
+                        name
+                    } = JSON.parse(saved);
+                    showDay(id, name);
+                } catch (e) {
+                    console.warn("Errore JSON.parse(saved):", e);
+                    // fallback al giorno corrente
+                    showCurrentDay();
+                }
+            } else {
                 showCurrentDay();
             }
-        } else {
-            showCurrentDay();
-        }
 
-        function showCurrentDay() {
-            const giorni = ["Sonntag",
-                "Montag",
-                "Dienstag",
-                "Mittwoch",
-                "Donnerstag",
-                "Freitag",
-                "Samstag"];
-            const ids = ["sonntag-id",
-                "montag-id",
-                "dienstag-id",
-                "mittwoch-id",
-                "donnerstag-id",
-                "freitag-id",
-                "samstag-id"];
-            const oggi = new Date().getDay();
-            showDay(ids[oggi], giorni[oggi]);
-        }
-    });
+            function showCurrentDay() {
+                const giorni = ["Sonntag",
+                    "Montag",
+                    "Dienstag",
+                    "Mittwoch",
+                    "Donnerstag",
+                    "Freitag",
+                    "Samstag"];
+                const ids = ["sonntag-id",
+                    "montag-id",
+                    "dienstag-id",
+                    "mittwoch-id",
+                    "donnerstag-id",
+                    "freitag-id",
+                    "samstag-id"];
+                const oggi = new Date().getDay();
+                showDay(ids[oggi], giorni[oggi]);
+            }
+        });
 
 
-    /* Script for Navbar END */
-    createTable(montagtabelle, "Montag", "montag-id");
-    createTable(dienstagtabelle, "Dienstag", "dienstag-id");
-    createTable(mittwochtabelle, "Mittwoch", "mittwoch-id");
-    createTable(donnerstagtabelle, "Donnerstag", "donnerstag-id");
-    createTable(freitagtabelle, "Freitag", "freitag-id");
-    createTable(samstagtabelle, "Samstag", "samstag-id");
-    createTable(sonntagtabelle, "Sonntag", "sonntag-id");
+        /* Script for Navbar END */
+        createTable(montagtabelle, "Montag", "montag-id");
+        createTable(dienstagtabelle, "Dienstag", "dienstag-id");
+        createTable(mittwochtabelle, "Mittwoch", "mittwoch-id");
+        createTable(donnerstagtabelle, "Donnerstag", "donnerstag-id");
+        createTable(freitagtabelle, "Freitag", "freitag-id");
+        createTable(samstagtabelle, "Samstag", "samstag-id");
+        createTable(sonntagtabelle, "Sonntag", "sonntag-id");
 
-    function createTable(datacontent, wday, wdayid) {
-        if (datacontent.length) {
-            for (let tableindex = 0; tableindex < datacontent.length; tableindex++) {
-                const wrapper = document.createElement("div");
-                wrapper.className = "table-wrapper";
-                const table = document.createElement("table");
-                table.className = "db-plan";
-                const thead = document.createElement("thead");
-                const tr1 = document.createElement("tr");
-                tr1.innerHTML = `
-                <th><span>Service</span></th>
-                <th><span>Bereich</span></th>
-                <th><span>Bemerkung neu</span></th>
-                <th><span>Inventar</span></th>
-                <th><span>Menge</span></th>
-                <th><span>Einheit</span></th>
-                <th><span>Reihen<br />folge</span></th>
-                <th><span>Leistungs-<br />zeit</span></th>
-                <th><span>${wday.slice(0, 2)}</span></th>
-                <th><span>Bemerkungen</span></th>
-                <th><span>Zielbild</span></th>
-                `;
-                thead.appendChild(tr1);
-                table.appendChild(thead);
-                const tbody = document.createElement("tbody");
-                tbody.id = "table-body";
-                table.appendChild(tbody);
-                wrapper.appendChild(table);
-                document.getElementById(wdayid).appendChild(wrapper);
-
-                var data = JSON.parse(datacontent[tableindex]);
-
-                data.forEach(row => {
-                    var tr = document.createElement('tr');
-                    row.forEach((cell, index) => {
-                        var td = document.createElement('td');
-                        if (index === 7 && Array.isArray(cell)) {
-                            // Spalte 8
-                            var key = cell[0];
-                            var dati = leistungszeiten[key];
-                            if (dati) {
-                                var [start,
-                                    end] = dati.text.split("-");
-                                td.innerHTML = `${start}<br>${end}`;
-                                td.style.color = dati.farbe;
-                            }
-                        } else {
-                            td.textContent = cell;
-                            if (index === 10) {
-                                td.dataset.code = cell;
-                            }
-
-                        }
-                        tr.appendChild(td);
-                    });
-                    tbody.appendChild(tr);
-                });
-            }// close if datacontent.length
-
-        }
-
-    }//close createTable()
-    /* script for content end */
-
-
-</script>
-<!-- Modal -->
-<div id="codeModal" class="modal">
-    <div class="modal-content">
-        <button class="close-btn" id="closeModal">&times;</button>
-        <div id="modalText"></div>
-    </div>
-</div>
-<script>
-    //for modal Zielbild
-    // Event listeners
-    document.querySelectorAll("td[data-code]").forEach(td => {
-        td.addEventListener("click",
-            function () {
-                let code = td.getAttribute("data-code");
-
-                if (zielbild.has(code)) {
-                    let info = zielbild.get(code);
-
-                    // Uso <p> per creare distanza tra le righe
-                    document.getElementById("modalText").innerHTML = `
-                    <p class="code-title">(${code}) ${info.be1}</p>
-                    <p class="beschreibung-title">${info.be2}</p>
-                    <p>${info.be3}</p>
-                    <p class="beschreibung-title">${info.be4}</p>
+        function createTable(datacontent, wday, wdayid) {
+            if (datacontent.length) {
+                for (let tableindex = 0; tableindex < datacontent.length; tableindex++) {
+                    const wrapper = document.createElement("div");
+                    wrapper.className = "table-wrapper";
+                    const table = document.createElement("table");
+                    table.className = "db-plan";
+                    const thead = document.createElement("thead");
+                    const tr1 = document.createElement("tr");
+                    tr1.innerHTML = `
+                    <th><span>Service</span></th>
+                    <th><span>Bereich</span></th>
+                    <th><span>Bemerkung neu</span></th>
+                    <th><span>Inventar</span></th>
+                    <th><span>Menge</span></th>
+                    <th><span>Einheit</span></th>
+                    <th><span>Reihen<br />folge</span></th>
+                    <th><span>Leistungs-<br />zeit</span></th>
+                    <th><span>${wday.slice(0, 2)}</span></th>
+                    <th><span>Bemerkungen</span></th>
+                    <th><span>Zielbild</span></th>
                     `;
-                    document.getElementById("codeModal").style.display = "block";
-                }
-            });
-    });
+                    thead.appendChild(tr1);
+                    table.appendChild(thead);
+                    const tbody = document.createElement("tbody");
+                    tbody.id = "table-body";
+                    table.appendChild(tbody);
+                    wrapper.appendChild(table);
+                    document.getElementById(wdayid).appendChild(wrapper);
 
-    // Close modal
-    document.getElementById("closeModal").addEventListener("click", function () {
-        document.getElementById("codeModal").style.display = "none";
-    });
+                    var data = JSON.parse(datacontent[tableindex]);
 
-    // Close modal clicking outside content
-    window.addEventListener("click", function (e) {
-        if (e.target == document.getElementById("codeModal")) {
+                    data.forEach(row => {
+                        var tr = document.createElement('tr');
+                        row.forEach((cell, index) => {
+                            var td = document.createElement('td');
+                            if (index === 7 && Array.isArray(cell)) {
+                                // Spalte 8
+                                var key = cell[0];
+                                var dati = leistungszeiten[key];
+                                if (dati) {
+                                    var [start,
+                                        end] = dati.text.split("-");
+                                    td.innerHTML = `${start}<br>${end}`;
+                                    td.style.color = dati.farbe;
+                                }
+                            } else {
+                                td.textContent = cell;
+                                if (index === 10) {
+                                    td.dataset.code = cell;
+                                }
+
+                            }
+                            tr.appendChild(td);
+                        });
+                        tbody.appendChild(tr);
+                    });
+                }// close if datacontent.length
+
+            }
+
+        }//close createTable()
+        /* script for content end */
+
+
+    </script>
+    <!-- Modal -->
+    <div id="codeModal" class="modal">
+        <div class="modal-content">
+            <button class="close-btn" id="closeModal">&times;</button>
+            <div id="modalText"></div>
+        </div>
+    </div>
+    <script>
+        //for modal Zielbild
+        // Event listeners
+        document.querySelectorAll("td[data-code]").forEach(td => {
+            td.addEventListener("click",
+                function () {
+                    let code = td.getAttribute("data-code");
+
+                    if (zielbild.has(code)) {
+                        let info = zielbild.get(code);
+
+                        // Uso <p> per creare distanza tra le righe
+                        document.getElementById("modalText").innerHTML = `
+                        <p class="code-title">(${code}) ${info.be1}</p>
+                        <p class="beschreibung-title">${info.be2}</p>
+                        <p>${info.be3}</p>
+                        <p class="beschreibung-title">${info.be4}</p>
+                        `;
+                        document.getElementById("codeModal").style.display = "block";
+                    }
+                });
+        });
+
+        // Close modal
+        document.getElementById("closeModal").addEventListener("click", function () {
             document.getElementById("codeModal").style.display = "none";
-        }
-    });
-    // Scroll handle
-    const btn = document.getElementById('lockBtn');
-    const scrollArea = document.querySelector('#scroll-area');
+        });
 
-    btn.addEventListener('click', () => {
-        document.body.classList.toggle('locked');
-        scrollArea.classList.toggle('locked');
-    });
+        // Close modal clicking outside content
+        window.addEventListener("click", function (e) {
+            if (e.target == document.getElementById("codeModal")) {
+                document.getElementById("codeModal").style.display = "none";
+            }
+        });
+        // Scroll handle
+        const btn = document.getElementById('lockBtn');
+        const scrollArea = document.querySelector('#scroll-area');
 
-    /* For fullscreen */
-/*
+        btn.addEventListener('click', () => {
+            document.body.classList.toggle('locked');
+            scrollArea.classList.toggle('locked');
+        });
+
+        /* For fullscreen */
+        /*
     const btnfs = document.getElementById('fullscreen-btn');
 
     btnfs.addEventListener('click', () => {
@@ -1347,7 +1346,7 @@
         document.body.classList.toggle('fullscreen', !!document.fullscreenElement);
     });
 */
-</script>
+    </script>
 
 </body>
 
