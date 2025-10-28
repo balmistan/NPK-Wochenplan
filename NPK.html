@@ -21,6 +21,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>NPK-Wochenplan</title>
+
 <head>
     <script>
         const leistungszeiten = {
@@ -72,12 +73,13 @@
                 text: "23:45-04:45",
                 farbe: "black"
             },
+            /* npkzeit_...  für die Präsenzreinigung */
             npkzeit_0700_1300: {
                 text: "07:00-13:00",
                 farbe: "green"
             },
             npkzeit_1400_2000: {
-                // npk...  für die Präsenzreinigung
+
                 text: "14:00-20:00",
                 farbe: "green"
             },
@@ -97,39 +99,39 @@
         var zielbild = new Map();
 
 
-/*
- * Hinweise zur Bearbeitung dieser Datei:
- *
- * - Vor Änderungen an der Datei sollte eine Sicherungskopie erstellt werden.
- *   Im Fehlerfall kann die Anwendung sonst nicht mehr funktionieren,
- *   und das Auffinden des Fehlers kann schwierig sein.
- *
- * - Jeder Wochentag enthält ein eigenes Set von Tabellen.
- *   Beispiel:
- *     - Montag  → montagtabelle[...]
- *     - Dienstag → dienstagtabelle[...]
- *     - usw.
- *
- * - Der numerische Index in eckigen Klammern gibt die Position der Tabelle auf der Seite an.
- *   Die Nummerierung erfolgt fortlaufend: 0, 1, 2, ... – immer beginnend mit 0.
- *
- * - Zum Ändern des Tabelleninhalts sollte zunächst die entsprechende Position ermittelt werden.
- *   Beispiel: Um die zweite Tabelle der Seite „Mittwoch“ zu ändern,
- *   nach mittwochtabelle[1] suchen.
- *   Die erste Tabelle entspricht mittwochtabelle[0].
- *
- * - Für Änderungen dem unten angegebenen Schema folgen.
- *   - Die Spalte „Bahnhof/Ort“ wird vollständig ignoriert.
- *   - Die Spalte „Reihenfolge“ wird mit "" (leer) angegeben.
- *     Diese Spalte wird nicht angezeigt.
- *   - Zu beachten ist, wie im Schema dargestellt, dass jede Spalte durch ein Komma getrennt wird, mit Ausnahme der letzten Zeile.
- */
+        /*
+         * Hinweise zur Bearbeitung dieser Datei:
+         *
+         * - Vor Änderungen an der Datei sollte eine Sicherungskopie erstellt werden.
+         *   Im Fehlerfall kann die Anwendung sonst nicht mehr funktionieren,
+         *   und das Auffinden des Fehlers kann schwierig sein.
+         *
+         * - Jeder Wochentag enthält ein eigenes Set von Tabellen.
+         *   Beispiel:
+         *     - Montag  → montagtabelle[...]
+         *     - Dienstag → dienstagtabelle[...]
+         *     - usw.
+         *
+         * - Der numerische Index in eckigen Klammern gibt die Position der Tabelle auf der Seite an.
+         *   Die Nummerierung erfolgt fortlaufend: 0, 1, 2, ... – immer beginnend mit 0.
+         *
+         * - Zum Ändern des Tabelleninhalts sollte zunächst die entsprechende Position ermittelt werden.
+         *   Beispiel: Um die zweite Tabelle der Seite „Mittwoch“ zu ändern,
+         *   nach mittwochtabelle[1] suchen.
+         *   Die erste Tabelle entspricht mittwochtabelle[0].
+         *
+         * - Für Änderungen dem unten angegebenen Schema folgen.
+         *   - Die Spalte „Bahnhof/Ort“ wird vollständig ignoriert.
+         *   - Die Spalte „Reihenfolge“ wird mit "" (leer) angegeben.
+         *     Diese Spalte wird nicht angezeigt.
+         *   - Zu beachten ist, wie im Schema dargestellt, dass jede Spalte durch ein Komma getrennt wird, mit Ausnahme der letzten Zeile.
+         */
 
 
 
-/*CONTENT TABELLE START*/
+        /*CONTENT TABELLE START*/
 
-/* MONTAG */
+        /* MONTAG */
         montagtabelle[0] = `[
         ["", "Frühdienst", "07:00 13:00", "Präsenzreinigung", 6, "Std","",["npkzeit_0700_1300"],"P1","","32"]
         ]`;
@@ -180,7 +182,7 @@
         ]`;
 
 
-/* Dienstag */
+        /* Dienstag */
         dienstagtabelle[0] = `[
         ["", "Frühdienst", " 07:00 13:00", "Präsenzreinigung", 6, "Std","",["npkzeit_0700_1300"],"P1","","32"]
         ]`;
@@ -229,7 +231,7 @@
         ]`;
 
 
-/* Mittwoch */
+        /* Mittwoch */
         mittwochtabelle[0] = `[
         ["", "Frühdienst", " 07:00 13:00", "Präsenzreinigung", 6, "Std","",["npkzeit_0700_1300"],"P1","","32"]
         ]`;
@@ -321,7 +323,7 @@
         ]`;
 
 
-/* Donnerstag */
+        /* Donnerstag */
 
         donnerstagtabelle[0] = `[
         ["Unterführung","Durchgang A (Aufzug)","beide Treppen","Treppe","77,28","m²","",["zeit_0600_0700"],"P1.1","","34"],
@@ -368,7 +370,7 @@
         ]`;
 
 
-/* Freitag */
+        /* Freitag */
 
         freitagtabelle[0] = `[
         ["Unterführung","Durchgang A (Aufzug)","","Aufzug","20,24","m²","",["zeit_0600_0700"],"P1.1","","9"],
@@ -433,7 +435,7 @@
         ]`;
 
 
-/* Samstag */
+        /* Samstag */
 
         samstagtabelle[0] = `[
 
@@ -461,10 +463,9 @@
         ["Empfangshalle","Empfangshalle","","Boden","1303","m²","",["zeit_2100_2215"],"P2.N","","30b"]
         ]`;
 
-/* Sonntag */
+        /* Sonntag */
 
         sonntagtabelle[0] = `[
-
         ["Bahnsteige","7 und 8","","Abfallbehälter","8","Stk.","",["zeit_0600_0700"],"P1.1","","2a"],
         ["Bahnsteige","5 und 6","","Abfallbehälter","7","Stk.","",["zeit_0600_0700"],"P1.1","","2a"],
         ["Bahnsteige","5 und 6","","Aschenbecher","1","Stk.","",["zeit_0600_0700"],"P1.1","","2a"],
@@ -488,7 +489,7 @@
         ["", "Spätdienst", " 15:00 21:00", "Präsenzreinigung", 6, "Std","",["npkzeit_1400_2000"],"P3","","32"]
         ]`;
 
-/* ZIELBILD */
+        /* ZIELBILD */
 
         zielbild.set("1", {
             be1: "Abfallbehälter",
@@ -644,6 +645,7 @@
             margin: 0;
             padding-top: 70px
         }
+
         .nav {
             position: fixed;
             top: 0;
@@ -658,6 +660,7 @@
             padding: 0 1rem;
             z-index: 1000;
         }
+
         .dropdown {
             position: absolute;
             right: 1rem;
@@ -669,27 +672,32 @@
             display: none;
             opacity: 1;
         }
+
         .dropdown.show {
             display: block
         }
+
         .day {
             padding: 8px 12px;
             cursor: pointer
         }
+
         .day:hover {
             background: #eee
         }
+
         .wday {
             display: none;
             padding: 3px;
             margin-top: 75px;
             border: none;
         }
+
         .wday.show {
             display: block
         }
 
- 
+
         /*button for lock scroll*/
         .lock-btn {
             background: transparent;
@@ -702,20 +710,25 @@
             color: #fff;
             /* icone bianche */
         }
+
         .lock-btn svg {
             width: 32px;
             height: 32px;
         }
+
         /* toggle icons */
         .icon-locked {
             display: none;
         }
+
         body.locked .icon-locked {
             display: inline;
         }
+
         body.locked .icon-unlocked {
             display: none;
         }
+
         body.locked {
             overflow: hidden;
             height: 100vh;
@@ -732,13 +745,14 @@
         }
 
         /*css for page content start */
-:root {
+        :root {
             --border: #d6d6d6;
             --text: #1f2937;
             --bg: #ffffff;
             --head-bg: #ffffff;
             --fontsize: 14px;
         }
+
         body {
             margin: 0;
             padding: 0;
@@ -747,6 +761,7 @@
             color: var(--text);
             font-size: var(--fontsize);
         }
+
         .table-wrapper {
             width: 100%;
             overflow-x: auto;
@@ -796,6 +811,7 @@
 
         /* Responsive für kleinen Bildschirm */
         @media (max-width: 768px) {
+
             .db-plan th,
             .db-plan td {
                 padding: 0.1rem;
