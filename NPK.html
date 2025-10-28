@@ -97,6 +97,8 @@
         var samstagtabelle = Array();
         var sonntagtabelle = Array();
         var zielbild = new Map();
+        
+        var bahnhof_ort = "Dresden Neustadt";
 
 
         /*
@@ -924,7 +926,8 @@
                     <circle cx="12" cy="15.5" r="1.3" />
                 </svg>
             </button>
-        </span>Dresden Neustadt
+        </span>
+        <span id="bahnhof-ort"></span>
         <div id="selected">
             Tag
         </div>
@@ -958,7 +961,7 @@
     <div id="scroll-area">
 
 
-        <!-- 7 div für Tage - Inhalt -->
+        <!-- 7 div für Tages Inhalt -->
         <div id="montag-id" class="wday"></div>
         <div id="dienstag-id" class="wday"></div>
         <div id="mittwoch-id" class="wday"></div>
@@ -972,9 +975,10 @@
 
     <script>
         window.onerror = function (msg, url, line, col, error) {
-            alert("Error JS: " + msg + "\nIn " + url + " (riga " + line + ")");
+            alert("Es ist ein Fehler aufgetreten!");
         };
         /* Script für Navbar fängt hier an */
+        document.getElementById("bahnhof-ort").innerHTML = `${bahnhof_ort}`;
         const menuBtn = document.getElementById('menuBtn');
         const menu = document.getElementById('dayMenu');
         const selected = document.getElementById('selected');
@@ -1018,7 +1022,6 @@
                     showDay(id, name);
                 } catch (e) {
                     console.warn("Errore JSON.parse(saved):", e);
-                    // fallback al giorno corrente
                     showCurrentDay();
                 }
             } else {
@@ -1026,7 +1029,7 @@
             }
 
             function showCurrentDay() {
-                const giorni = ["Sonntag",
+                const days = ["Sonntag",
                     "Montag",
                     "Dienstag",
                     "Mittwoch",
@@ -1040,8 +1043,8 @@
                     "donnerstag-id",
                     "freitag-id",
                     "samstag-id"];
-                const oggi = new Date().getDay();
-                showDay(ids[oggi], giorni[oggi]);
+                const today = new Date().getDay();
+                showDay(ids[today], giorni[today]);
             }
         });
 
@@ -1139,7 +1142,6 @@
                     if (zielbild.has(code)) {
                         let info = zielbild.get(code);
 
-                        // Uso <p> per creare distanza tra le righe
                         document.getElementById("modalText").innerHTML = `
                         <p class="code-title">(${code}) ${info.be1}</p>
                         <p class="beschreibung-title">${info.be2}</p>
