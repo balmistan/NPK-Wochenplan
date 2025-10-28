@@ -1,4 +1,22 @@
 <!doctype html>
+<!-- 
+
+
+  Autor: Daniele San Giovanni
+  
+  E-Mail: sangiovanni.daniele@gmail.com
+  
+  Datum: Oktober 2025
+  
+  Zweck: NPK-Wochenplan, digital umgesetzt.
+  
+  Hinweis:
+  
+    - Zum Bearbeiten dieser Datei siehe den Abschnitt „Hinweise zur Bearbeitung dieser Datei“ weiter unten.
+
+
+
+-->
 <html lang="de">
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -77,6 +95,37 @@
         var samstagtabelle = Array();
         var sonntagtabelle = Array();
         var zielbild = new Map();
+
+
+/*
+ * Hinweise zur Bearbeitung dieser Datei:
+ *
+ * - Vor Änderungen an der Datei sollte eine Sicherungskopie erstellt werden.
+ *   Im Fehlerfall kann die Anwendung sonst nicht mehr funktionieren,
+ *   und das Auffinden des Fehlers kann schwierig sein.
+ *
+ * - Jeder Wochentag enthält ein eigenes Set von Tabellen.
+ *   Beispiel:
+ *     - Montag  → montagtabelle[...]
+ *     - Dienstag → dienstagtabelle[...]
+ *     - usw.
+ *
+ * - Der numerische Index in eckigen Klammern gibt die Position der Tabelle auf der Seite an.
+ *   Die Nummerierung erfolgt fortlaufend: 0, 1, 2, ... – immer beginnend mit 0.
+ *
+ * - Zum Ändern des Tabelleninhalts sollte zunächst die entsprechende Position ermittelt werden.
+ *   Beispiel: Um die zweite Tabelle der Seite „Mittwoch“ zu ändern,
+ *   nach mittwochtabelle[1] suchen.
+ *   Die erste Tabelle entspricht mittwochtabelle[0].
+ *
+ * - Für Änderungen dem unten angegebenen Schema folgen.
+ *   - Die Spalte „Bahnhof/Ort“ wird vollständig ignoriert.
+ *   - Die Spalte „Reihenfolge“ wird mit "" (leer) angegeben.
+ *     Diese Spalte wird nicht angezeigt.
+ *   - Zu beachten ist, wie im Schema dargestellt, dass jede Spalte durch ein Komma getrennt wird, mit Ausnahme der letzten Zeile.
+ */
+
+
 
 /*CONTENT TABELLE START*/
 
