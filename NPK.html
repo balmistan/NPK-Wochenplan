@@ -97,7 +97,7 @@
         var samstagtabelle = Array();
         var sonntagtabelle = Array();
         var zielbild = new Map();
-        
+
         var bahnhof_ort = "Dresden Neustadt";
 
 
@@ -640,6 +640,8 @@
 
     </script>
 
+
+
     <style>
         /* css for Navbar start */
         body {
@@ -733,12 +735,12 @@
 
         body.locked {
             overflow: hidden;
-            height: 100vh;
+            height: 95vh;
         }
 
         #scroll-area {
             overflow-y: auto;
-            height: 100vh;
+            height: 95vh;
             box-sizing: border-box;
         }
 
@@ -901,16 +903,100 @@
             margin: 8px 0;
             line-height: 1.4;
         }
+
+        @media print {
+            .notprintable {
+                display: none !important;
+            }
+
+            .printable {
+                display: block !important;
+                color: black;
+            }
+
+            @page {
+                size: A4 portrait;
+                margin: 15mm;
+            }
+
+            * {
+                overflow: visible !important;
+            }
+
+            html,
+            body {
+                width: auto;
+                height: auto;
+                margin: 0 !important;
+                padding: 0 !important;
+                background: none !important;
+                color: #000;
+                font-family: "Arial", sans-serif;
+                font-size: 7px;
+                line-height: 1.1;
+                -webkit-print-color-adjust: exact;
+            }
+
+            table {
+                width: 100%;
+                border-collapse: collapse;
+                page-break-inside: auto;
+                border: none !important;
+                word-break: break-word;
+                overflow-wrap: break-word;
+                margin: 0 !important;
+            }
+
+            thead {
+                display: table-header-group;
+                position: relative;
+            }
+
+            thead::before {
+                content: "";
+                display: block;
+                height: 10mm;
+                background: white;
+                border: none !important;
+                margin: 0;
+                padding: 0;
+            }
+
+            tfoot {
+                display: table-footer-group;
+            }
+
+            tr {
+                page-break-inside: avoid;
+                break-inside: avoid;
+            }
+
+            .page-break {
+                page-break-after: always;
+                break-after: page;
+            }
+
+            .nav {
+                background-color: transparent !important;
+                padding-bottom: 0 !important
+            }
+
+            .table-wrapper {
+                padding-bottom: 0 !important;
+            }
+
+            .wday {
+                margin-top: 10px !important;
+            }
+        }
     </style>
 </head>
 
 <body>
-
     <!-- Navbar start -->
     <nav class="nav">
-        <span>
-            <button id="lockBtn" class="lock-btn" aria-label="Blocca/sblocca scroll">
-                <!-- Vorhängeschloss auf -->
+        <span class="noprintable">
+            <button id="lockBtn" class="lock-btn notprintable" aria-label="Blocca/sblocca scroll">
                 <svg class="icon-unlocked" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
                     stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                     <rect x="5" y="11" width="14" height="9" rx="2" ry="2" />
@@ -918,7 +1004,6 @@
                     <path d="M19 7a4 4 0 0 0-4-4h-1" />
                     <path d="M19 11V7" />
                 </svg>
-                <!-- Vorhängeschloss zu -->
                 <svg class="icon-locked" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
                     stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                     <path d="M8 11V8a4 4 0 0 1 8 0v3" />
@@ -927,35 +1012,25 @@
                 </svg>
             </button>
         </span>
-        <span id="bahnhof-ort"></span>
-        <div id="selected">
+
+        <span id="bahnhof-ort" class="printable"></span>
+        <div id="selected" class="printable">
             Tag
         </div>
-        <button id="menuBtn">WT ▼</button>
-        <div id="dayMenu" class="dropdown">
-            <div class="day" data-day="Montag" data-id="montag-id">
-                Montag
-            </div>
-            <div class="day" data-day="Dienstag" data-id="dienstag-id">
-                Dienstag
-            </div>
-            <div class="day" data-day="Mittwoch" data-id="mittwoch-id">
-                Mittwoch
-            </div>
-            <div class="day" data-day="Donnerstag" data-id="donnerstag-id">
-                Donnerstag
-            </div>
-            <div class="day" data-day="Freitag" data-id="freitag-id">
-                Freitag
-            </div>
-            <div class="day" data-day="Samstag" data-id="samstag-id">
-                Samstag
-            </div>
-            <div class="day" data-day="Sonntag" data-id="sonntag-id">
-                Sonntag
-            </div>
+
+        <!-- Menu vero e proprio -->
+        <button id="menuBtn" class="notprintable">WT ▼</button>
+        <div id="dayMenu" class="dropdown notprintable">
+            <div class="day" data-day="Montag" data-id="montag-id">Montag</div>
+            <div class="day" data-day="Dienstag" data-id="dienstag-id">Dienstag</div>
+            <div class="day" data-day="Mittwoch" data-id="mittwoch-id">Mittwoch</div>
+            <div class="day" data-day="Donnerstag" data-id="donnerstag-id">Donnerstag</div>
+            <div class="day" data-day="Freitag" data-id="freitag-id">Freitag</div>
+            <div class="day" data-day="Samstag" data-id="samstag-id">Samstag</div>
+            <div class="day" data-day="Sonntag" data-id="sonntag-id">Sonntag</div>
         </div>
     </nav>
+
 
 
     <div id="scroll-area">
