@@ -1022,6 +1022,26 @@ DEBUG_DAY_INDEX erzeugt statischen Kode. Mögliche Werte sind von 0 bis 6 oder n
 </head>
 
 <body>
+<noscript>
+<style>
+:root{--bg:#f3f4f6;--card:#ffffff;--accent:#1e90ff}
+html,body{height:100%;margin:0}
+.noscript-overlay{position:fixed;inset:0;display:flex;align-items:center;justify-content:center;background:linear-gradient(180deg,var(--bg),#e9eef7);font-family:system-ui,Arial,sans-serif;z-index:999999}
+.noscript-card{max-width:520px;padding:28px;border-radius:16px;background:var(--card);box-shadow:0 10px 30px rgba(15,23,42,0.12);text-align:center}
+.noscript-icon{width:72px;height:72px;margin:0 auto 12px;display:block}
+.noscript-title{font-size:20px;font-weight:700;margin:6px 0}
+.noscript-text{color:#334155;margin:10px 0 18px;line-height:1.4}
+.noscript-actions a{display:inline-block;padding:10px 16px;border-radius:10px;background:var(--accent);color:#fff;text-decoration:none;font-weight:600}
+.noscript-hint{font-size:13px;color:#64748b;margin-top:12px}
+</style>
+<div class="noscript-overlay">
+  <div class="noscript-card" role="alert">
+    <div class="noscript-actions"><a href="#" aria-disabled="true">Datei herunterladen</a></div>
+    <div class="noscript-hint">Nach dem Download: Lange auf die Datei tippen → „Öffnen mit Chrome“.</div>
+  </div>
+</div>
+</noscript>
+
     <!-- Navbar start -->
     <nav class="nav debug-day">
         <span class="noprintable">
