@@ -1,21 +1,12 @@
 <!doctype html>
-<!-- 
 
+<!--
 
-  Autor: Daniele San Giovanni
-  
-  E-Mail: sangiovanni.daniele@gmail.com
-  
-  Datum: Oktober 2025
-  
+Autor: Daniele San Giovanni
+E-Mail: sangiovanni.daniele@gmail.com
+Datum: Oktober 2025
   Zweck: NPK-Wochenplan, digital umgesetzt.
-  
-  Hinweis:
-  
-    - Zum Bearbeiten dieser Datei siehe den Abschnitt „Hinweise zur Bearbeitung dieser Datei“ weiter unten.
-
-
-
+  Hinweis:    - Zum Bearbeiten dieser Datei siehe den Abschnitt „Hinweise zur Bearbeitung dieser Datei“ weiter unten.
 -->
 <html lang="de">
 <meta charset="utf-8">
@@ -23,7 +14,46 @@
 <title>NPK-Wochenplan</title>
 
 <head>
-    <script>
+    <script type="text/javascript">
+/*
+DEBUG_DAY_INDEX erzeugt statischen Kode. Mögliche Werte sind von 0 bis 6 oder null
+0 Sonntag ... 6 Samstag
+*/
+        const DEBUG_DAY_INDEX = null;      
+
+        const days = [
+            {
+            name: "Sonntag",
+            id: "sonntag-id"
+        },
+            {
+            name: "Montag",
+            id: "montag-id"
+        },
+        {
+            name: "Dienstag",
+            id: "dienstag-id"
+        },
+        {
+            name: "Mittwoch",
+            id: "mittwoch-id"
+        },
+        {
+            name: "Donnerstag",
+            id: "donnerstag-id"
+        },
+        {
+            name: "Freitag",
+            id: "freitag-id"
+        },
+        {
+            name: "Samstag",
+            id: "samstag-id"
+        }
+        ];
+
+
+
         const leistungszeiten = {
             zeit_0530_0630: {
                 text: "05:30-06:30",
@@ -754,7 +784,7 @@
             --text: #1f2937;
             --bg: #ffffff;
             --head-bg: #ffffff;
-            --fontsize: 14px;
+
         }
 
         body {
@@ -763,11 +793,11 @@
             font-family: system-ui, sans-serif;
             background: var(--bg);
             color: var(--text);
-            font-size: var(--fontsize);
+            size: 14px !important;
         }
 
         .table-wrapper {
-            width: 100%;
+            width: 98%;
             overflow-x: auto;
             padding-bottom: 50px;
         }
@@ -782,9 +812,7 @@
 
         .db-plan th {
             background: var(--head-bg);
-            border: 3px solid var(--border);
-            font-weight: 600;
-            white-space: normal;
+            border: 3px solid var(--border);            font-weight: 55 white-space: normal;
         }
 
         .db-plan th span {
@@ -802,6 +830,7 @@
             white-space: normal;
             overflow-wrap: break-word;
             max-width: 40px;
+
         }
 
         .db-plan tr {
@@ -819,7 +848,7 @@
             .db-plan th,
             .db-plan td {
                 padding: 0.1rem;
-                font-size: 0.85rem;
+                font-size: 10px;
             }
         }
 
@@ -994,7 +1023,7 @@
 
 <body>
     <!-- Navbar start -->
-    <nav class="nav">
+    <nav class="nav debug-day">
         <span class="noprintable">
             <button id="lockBtn" class="lock-btn notprintable" aria-label="Blocca/sblocca scroll">
                 <svg class="icon-unlocked" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
@@ -1021,13 +1050,27 @@
         <!-- Menu vero e proprio -->
         <button id="menuBtn" class="notprintable">WT ▼</button>
         <div id="dayMenu" class="dropdown notprintable">
-            <div class="day" data-day="Montag" data-id="montag-id">Montag</div>
-            <div class="day" data-day="Dienstag" data-id="dienstag-id">Dienstag</div>
-            <div class="day" data-day="Mittwoch" data-id="mittwoch-id">Mittwoch</div>
-            <div class="day" data-day="Donnerstag" data-id="donnerstag-id">Donnerstag</div>
-            <div class="day" data-day="Freitag" data-id="freitag-id">Freitag</div>
-            <div class="day" data-day="Samstag" data-id="samstag-id">Samstag</div>
-            <div class="day" data-day="Sonntag" data-id="sonntag-id">Sonntag</div>
+            <div class="day" data-day="Montag" data-id="montag-id">
+                Montag
+            </div>
+            <div class="day" data-day="Dienstag" data-id="dienstag-id">
+                Dienstag
+            </div>
+            <div class="day" data-day="Mittwoch" data-id="mittwoch-id">
+                Mittwoch
+            </div>
+            <div class="day" data-day="Donnerstag" data-id="donnerstag-id">
+                Donnerstag
+            </div>
+            <div class="day" data-day="Freitag" data-id="freitag-id">
+                Freitag
+            </div>
+            <div class="day" data-day="Samstag" data-id="samstag-id">
+                Samstag
+            </div>
+            <div class="day" data-day="Sonntag" data-id="sonntag-id">
+                Sonntag
+            </div>
         </div>
     </nav>
 
@@ -1048,7 +1091,7 @@
     </div>
 
 
-    <script>
+    <script type="text/javascript">
         window.onerror = function (msg, url, line, col, error) {
             alert("Es ist ein Fehler aufgetreten!");
         };
@@ -1086,8 +1129,24 @@
             }
         });
 
-        window.addEventListener('DOMContentLoaded', () => {
-            const saved = localStorage.getItem('selectedDay');
+
+
+        window.addEventListener("DOMContentLoaded", () => {
+
+            // ► DEBUG aktiv → verwende festen Index
+            if (DEBUG_DAY_INDEX !== null && DEBUG_DAY_INDEX >= 0 && DEBUG_DAY_INDEX <= 6) {
+
+                document.querySelector(".debug-day").style.visibility = "hidden";
+
+                document.title = days[DEBUG_DAY_INDEX]['name']
+
+                const d = days[DEBUG_DAY_INDEX];
+                showDay(d.id, d.name);
+                return;
+            }
+
+            // ► Versuche gespeicherten Wert zu laden (wie früher!)
+            const saved = localStorage.getItem("selectedDay");
             if (saved) {
                 try {
                     const {
@@ -1095,32 +1154,16 @@
                         name
                     } = JSON.parse(saved);
                     showDay(id, name);
+                    return;
                 } catch (e) {
-                    console.warn("Errore JSON.parse(saved):", e);
-                    showCurrentDay();
+                    console.warn("Fehler beim JSON.parse:", e);
                 }
-            } else {
-                showCurrentDay();
             }
 
-            function showCurrentDay() {
-                const days = ["Sonntag",
-                    "Montag",
-                    "Dienstag",
-                    "Mittwoch",
-                    "Donnerstag",
-                    "Freitag",
-                    "Samstag"];
-                const ids = ["sonntag-id",
-                    "montag-id",
-                    "dienstag-id",
-                    "mittwoch-id",
-                    "donnerstag-id",
-                    "freitag-id",
-                    "samstag-id"];
-                const today = new Date().getDay();
-                showDay(ids[today], days[today]);
-            }
+            // ► Kein gespeicherter Wert → heutigen Tag verwenden
+            const today = new Date().getDay();
+            const d = days[today];
+            showDay(d.id, d.name);
         });
 
 
@@ -1206,7 +1249,7 @@
             <div id="modalText"></div>
         </div>
     </div>
-    <script>
+    <script type="text/javascript">
         //for modal Zielbild
         // Event listeners
         document.querySelectorAll("td[data-code]").forEach(td => {
@@ -1248,6 +1291,65 @@
             scrollArea.classList.toggle('locked');
         });
 
+    </script>
+
+
+    <!-- BOX dove verrà mostrato l'HTML finale -->
+    <div id="export-box" contenteditable="true" style="
+        position:fixed;
+        bottom:0;
+        left:0;
+        width:100%;
+        height:10%;
+        background:#fff;
+        border-top:2px solid #000;
+        z-index:999999;
+        padding:10px;
+        overflow:auto;
+        font-family: monospace;
+        font-size: 12px;
+        white-space: pre;
+        "></div>
+
+
+    <script type="text/javascript">
+        if (DEBUG_DAY_INDEX) {
+            window.addEventListener("load", () => {
+                const fullHtml = document.documentElement.outerHTML;
+                var outstr = removeAllJS(fullHtml);
+
+                outstr = removeDiv(outstr, "export-box");
+
+                outstr = removeEmptyRows(outstr);
+
+                for (let i = 0; i < days.length; i++) {
+                    if (i != DEBUG_DAY_INDEX) {
+                        outstr = removeDiv(outstr, days[i]['id']);
+                    }
+                }
+                document.getElementById("export-box").textContent = removeAllJS(outstr);
+            })
+
+        } else {
+            document.getElementById('export-box').style.visibility = "hidden";
+        }
+
+        function removeAllJS(codice) {
+            return codice.replace(/<script\b(?![^>]*type=['"]text\/css['"])[^>]*>[\s\S]*?<\/script>/gi,
+                '');
+        }
+
+        function removeDiv(code, div_id) {
+            const pattern = new RegExp(
+                `<div[^>]*\\bid=["']${div_id}["'][^>]*>[\\s\\S]*?<\\/div>`,
+                "gi"
+            );
+            return code.replace(pattern,
+                '');
+        }
+        function removeEmptyRows(s) {
+            return s.split("\n").filter(l => l.trim() !== "").join("\n");
+        }
     </script>
 
 </body>
