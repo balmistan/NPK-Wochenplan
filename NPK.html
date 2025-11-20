@@ -15,42 +15,40 @@ Datum: Oktober 2025
 
 <head>
     <script type="text/javascript">
-/*
+        /*
 DEBUG_DAY_INDEX erzeugt statischen Kode. Mögliche Werte sind von 0 bis 6 oder null
 0 Sonntag ... 6 Samstag
 */
-        const DEBUG_DAY_INDEX = null;      
+        const DEBUG_DAY_INDEX = 5;
 
-        const days = [
-            {
+        const days = [{
             name: "Sonntag",
             id: "sonntag-id"
         },
             {
-            name: "Montag",
-            id: "montag-id"
-        },
-        {
-            name: "Dienstag",
-            id: "dienstag-id"
-        },
-        {
-            name: "Mittwoch",
-            id: "mittwoch-id"
-        },
-        {
-            name: "Donnerstag",
-            id: "donnerstag-id"
-        },
-        {
-            name: "Freitag",
-            id: "freitag-id"
-        },
-        {
-            name: "Samstag",
-            id: "samstag-id"
-        }
-        ];
+                name: "Montag",
+                id: "montag-id"
+            },
+            {
+                name: "Dienstag",
+                id: "dienstag-id"
+            },
+            {
+                name: "Mittwoch",
+                id: "mittwoch-id"
+            },
+            {
+                name: "Donnerstag",
+                id: "donnerstag-id"
+            },
+            {
+                name: "Freitag",
+                id: "freitag-id"
+            },
+            {
+                name: "Samstag",
+                id: "samstag-id"
+            }];
 
 
 
@@ -779,7 +777,7 @@ DEBUG_DAY_INDEX erzeugt statischen Kode. Mögliche Werte sind von 0 bis 6 oder n
         }
 
         /*css for page content start */
-        :root {
+:root {
             --border: #d6d6d6;
             --text: #1f2937;
             --bg: #ffffff;
@@ -797,22 +795,24 @@ DEBUG_DAY_INDEX erzeugt statischen Kode. Mögliche Werte sind von 0 bis 6 oder n
         }
 
         .table-wrapper {
-            width: 98%;
+            width: 100%;
             overflow-x: auto;
             padding-bottom: 50px;
         }
 
         /* responsive table*/
         .db-plan {
-            width: 100%;
+            width: 95%;
             border-collapse: collapse;
             border: 1px solid var(--border);
             table-layout: auto;
+            
         }
 
         .db-plan th {
             background: var(--head-bg);
-            border: 3px solid var(--border);            font-weight: 55 white-space: normal;
+            border: 3px solid var(--border);
+            font-weight: 55 white-space: normal;
         }
 
         .db-plan th span {
@@ -848,7 +848,7 @@ DEBUG_DAY_INDEX erzeugt statischen Kode. Mögliche Werte sind von 0 bis 6 oder n
             .db-plan th,
             .db-plan td {
                 padding: 0.1rem;
-                font-size: 10px;
+                font-size: 12px;
             }
         }
 
@@ -1022,25 +1022,77 @@ DEBUG_DAY_INDEX erzeugt statischen Kode. Mögliche Werte sind von 0 bis 6 oder n
 </head>
 
 <body>
-<noscript>
-<style>
-:root{--bg:#f3f4f6;--card:#ffffff;--accent:#1e90ff}
-html,body{height:100%;margin:0}
-.noscript-overlay{position:fixed;inset:0;display:flex;align-items:center;justify-content:center;background:linear-gradient(180deg,var(--bg),#e9eef7);font-family:system-ui,Arial,sans-serif;z-index:999999}
-.noscript-card{max-width:520px;padding:28px;border-radius:16px;background:var(--card);box-shadow:0 10px 30px rgba(15,23,42,0.12);text-align:center}
-.noscript-icon{width:72px;height:72px;margin:0 auto 12px;display:block}
-.noscript-title{font-size:20px;font-weight:700;margin:6px 0}
-.noscript-text{color:#334155;margin:10px 0 18px;line-height:1.4}
-.noscript-actions a{display:inline-block;padding:10px 16px;border-radius:10px;background:var(--accent);color:#fff;text-decoration:none;font-weight:600}
-.noscript-hint{font-size:13px;color:#64748b;margin-top:12px}
-</style>
-<div class="noscript-overlay">
-  <div class="noscript-card" role="alert">
-    <div class="noscript-actions"><a href="#" aria-disabled="true">Datei herunterladen</a></div>
-    <div class="noscript-hint">Nach dem Download: Lange auf die Datei tippen → „Öffnen mit Chrome“.</div>
-  </div>
-</div>
-</noscript>
+    <noscript>
+        <style>
+:root {
+            --bg: #f3f4f6;
+            --card: #ffffff;
+            --accent: #1e90ff
+        }
+            html,body {
+                height: 100%;
+                margin: 0
+            }
+            .noscript-overlay {
+                position: fixed;
+                inset: 0;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                background: linear-gradient(180deg,var(--bg),#e9eef7);
+                font-family: system-ui,Arial,sans-serif;
+                z-index: 999999
+            }
+            .noscript-card {
+                max-width: 520px;
+                padding: 28px;
+                border-radius: 16px;
+                background: var(--card);
+                box-shadow: 0 10px 30px rgba(15,23,42,0.12);
+                text-align: center
+            }
+            .noscript-icon {
+                width: 72px;
+                height: 72px;
+                margin: 0 auto 12px;
+                display: block
+            }
+            .noscript-title {
+                font-size: 20px;
+                font-weight: 700;
+                margin: 6px 0
+            }
+            .noscript-text {
+                color: #334155;
+                margin: 10px 0 18px;
+                line-height: 1.4
+            }
+            .noscript-actions a {
+                display: inline-block;
+                padding: 10px 16px;
+                border-radius: 10px;
+                background: var(--accent);
+                color: #fff;
+                text-decoration: none;
+                font-weight: 600
+            }
+            .noscript-hint {
+                font-size: 13px;
+                color: #64748b;
+                margin-top: 12px
+            }
+        </style>
+        <div class="noscript-overlay">
+            <div class="noscript-card" role="alert">
+                <div class="noscript-actions">
+                    <a href="#" aria-disabled="true">Datei herunterladen</a>
+                </div>
+                <div class="noscript-hint">
+                    Nach dem Download: Lange auf die Datei tippen → „Öffnen mit Chrome“.
+                </div>
+            </div>
+        </div>
+    </noscript>
 
     <!-- Navbar start -->
     <nav class="nav debug-day">
@@ -1327,7 +1379,7 @@ html,body{height:100%;margin:0}
         padding:10px;
         overflow:auto;
         font-family: monospace;
-        font-size: 12px;
+        font-size: 10px;
         white-space: pre;
         "></div>
 
@@ -1339,7 +1391,7 @@ html,body{height:100%;margin:0}
                 var outstr = removeAllJS(fullHtml);
 
                 outstr = removeDiv(outstr, "export-box");
-
+                outstr = removeNoscriptBlocks(outstr);
                 outstr = removeEmptyRows(outstr);
 
                 for (let i = 0; i < days.length; i++) {
@@ -1369,6 +1421,9 @@ html,body{height:100%;margin:0}
         }
         function removeEmptyRows(s) {
             return s.split("\n").filter(l => l.trim() !== "").join("\n");
+        }
+        function removeNoscriptBlocks(html) {
+            return html.replace(/<noscript[\s\S]*?<\/noscript>/gi, "");
         }
     </script>
 
