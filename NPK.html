@@ -19,7 +19,7 @@ Datum: Oktober 2025
 DEBUG_DAY_INDEX erzeugt statischen Kode. Mögliche Werte sind von 0 bis 6 oder null
 0 Sonntag ... 6 Samstag
 */
-        const DEBUG_DAY_INDEX = 5;
+        const DEBUG_DAY_INDEX = null;
 
         const days = [{
             name: "Sonntag",
@@ -659,8 +659,8 @@ DEBUG_DAY_INDEX erzeugt statischen Kode. Mögliche Werte sind von 0 bis 6 oder n
         zielbild.set("34", {
             be1: "Treppen, manuell",
             be2: "Stationsreinigung",
-            be3: "Treppen Grobreinigung manuell kehren",
-            be4: "Oberflächen sind frei von haftenden Verschmutzungen. Gummiabsatzstriche und Kaugummi können noch vorhanden sein."
+            be3: "Treppen, Nass Reinigung, manuell einstufig",
+            be4: "Oberflächen sind frei von haftenden Verschmutzungen. Gummiabsatzstriche und Kaugummi können noch vorhanden sein"
         });
 
 
@@ -806,7 +806,7 @@ DEBUG_DAY_INDEX erzeugt statischen Kode. Mögliche Werte sind von 0 bis 6 oder n
             border-collapse: collapse;
             border: 1px solid var(--border);
             table-layout: auto;
-            
+
         }
 
         .db-plan th {
@@ -844,11 +844,11 @@ DEBUG_DAY_INDEX erzeugt statischen Kode. Mögliche Werte sind von 0 bis 6 oder n
 
         /* Responsive für kleinen Bildschirm */
         @media (max-width: 768px) {
-
             .db-plan th,
             .db-plan td {
+                /*font-size: 0.6rem; */
+                font-size: 13px;
                 padding: 0.1rem;
-                font-size: 12px;
             }
         }
 
@@ -1379,7 +1379,7 @@ DEBUG_DAY_INDEX erzeugt statischen Kode. Mögliche Werte sind von 0 bis 6 oder n
         padding:10px;
         overflow:auto;
         font-family: monospace;
-        font-size: 10px;
+        font-size: 13px;
         white-space: pre;
         "></div>
 
