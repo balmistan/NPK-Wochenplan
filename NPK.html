@@ -1257,17 +1257,17 @@ DEBUG_DAY_INDEX erzeugt statischen Kode. Mögliche Werte sind von 0 bis 6 oder n
                     const thead = document.createElement("thead");
                     const tr1 = document.createElement("tr");
                     tr1.innerHTML = `
-                    <th><span>Service</span></th>
-                    <th><span>Bereich</span></th>
-                    <th><span>Bemerkung neu</span></th>
-                    <th><span>Inventar</span></th>
+                    <th><span>Servicekomponente</span></th>
+                    <th><span>Teilbereich</span></th>
+                    <th><span>Bemerkung</span></th>
+                    <th><span>Equipment</span></th>
                     <th><span>Menge</span></th>
                     <th><span>Einheit</span></th>
                     <th><span>Reihen<br />folge</span></th>
-                    <th><span>Leistungs-<br />zeit</span></th>
+                    <th><span>Prüf Zeit_${wday.slice(0, 2)}</span></th>
                     <th><span>${wday.slice(0, 2)}</span></th>
-                    <th><span>Bemerkungen</span></th>
-                    <th><span>Zielbild</span></th>
+                    <th><span>Kurzbeschreibung</span></th>
+                    <th><span>Kennwort</span></th>
                     `;
                     thead.appendChild(tr1);
                     table.appendChild(thead);
